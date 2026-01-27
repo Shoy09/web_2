@@ -1,0 +1,417 @@
+/* Contenedor principal */
+.footer-container {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* =========================
+   FOOTER NEWS (TOP SECTION)
+========================= */
+
+.footer-news {
+  background: #fff;
+  padding: 40px 40px 30px; /* Padding ajustado */
+  bottom: 100%; /* Lo posiciona justo encima del footer */
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin-bottom: 0; /* Eliminado el margin negativo */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); /* Sutil sombra para separación visual */
+}
+
+.footer-news__content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.footer-news__date {
+  font-size: 14px;
+  color: #000;
+  opacity: 0.7;
+  margin-bottom: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.footer-news__item h5 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.footer-news__item a {
+  color: #000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  padding: 5px 0;
+}
+
+.footer-news__item a:hover {
+  color: #2a5c39;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   FOOTER (SIN CAMBIOS en el fondo)
+========================= */
+
+.footer {
+  background-image: url('/mountain-footer--green.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #000;
+  padding: 90px 40px; /* Mantiene el padding original */
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative; /* Necesario para el posicionamiento de .footer-news */
+  min-height: 500px; /* Altura mínima fija */
+}
+
+.footer__content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .footer-news {
+    padding: 35px 40px 25px;
+  }
+  
+  .footer-news__content {
+    gap: 30px;
+  }
+  
+  .footer-news__item h5 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-news {
+    padding: 30px 20px 20px;
+    position: relative; /* Cambia a relative en móviles */
+    bottom: auto;
+    margin-bottom: 0;
+  }
+  
+  .footer-news__content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .footer {
+    padding: 60px 20px; /* Padding normal en móviles */
+    min-height: 450px;
+  }
+  
+  /* Asegurar que las noticias no se salgan del fondo en móviles */
+  .footer-container {
+    background: #fff; /* Fondo blanco para la sección de noticias */
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-news {
+    padding: 25px 15px 15px;
+  }
+  
+  .footer-news__item h5 {
+    font-size: 16px;
+  }
+  
+  .footer-news__date {
+    font-size: 13px;
+  }
+  
+  .footer {
+    padding: 50px 15px;
+    min-height: 400px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 400px) {
+  .footer-news__item h5 {
+    font-size: 14px;
+  }
+  
+  .footer {
+    min-height: 380px;
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 2000px) {
+  .footer-news {
+    padding: 50px 40px 40px;
+  }
+  
+  .footer-news__item h5 {
+    font-size: 24px;
+  }
+  
+  .footer {
+    min-height: 600px;
+  }
+}
+.footer {
+  background-image: url('/mountain-footer--green.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
+  padding: 90px 40px;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer__content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 400px;
+}
+
+/* IZQUIERDA - MODIFICADO */
+.footer__left {
+  flex: 1;
+  font-size: 16px; /* Tamaño de letra más grande */
+  text-align: center; /* Texto centrado */
+}
+
+.footer__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px; /* Más espacio debajo */
+}
+
+.footer__menu-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* Espaciado reducido entre elementos */
+  margin-bottom: 5px; /* Espacio entre filas */
+}
+
+.footer__privacy-row {
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.footer__menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px; /* Letras más grandes */
+  transition: opacity 0.3s ease;
+  padding: 2px 4px; /* Pequeño padding para mejor clic */
+}
+
+.footer__menu a:hover {
+  opacity: 0.8;
+}
+
+.separator {
+  opacity: 0.6;
+  font-size: 16px;
+}
+
+.footer__copyright {
+  opacity: 0.7;
+  font-size: 14px; /* Un poco más grande */
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* CENTRO */
+.footer__center {
+  flex: 0 0 auto;
+  text-align: center;
+  margin-top: -120px;
+}
+
+.footer__logo {
+  display: block;
+  width: 120px; /* Logo un poco más grande */
+  height: auto; /* Mantener proporción */
+  max-height: 90px;
+}
+
+/* DERECHA - MODIFICADO */
+.footer__right {
+  flex: 1;
+  text-align: center; /* Centrado también a la derecha */
+}
+
+.footer__contact {
+  margin-bottom: 20px;
+}
+
+.footer__contact p {
+  margin: 0 0 12px;
+  font-size: 16px; /* Más grande */
+  line-height: 1.4;
+}
+
+.footer__contact a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer__contact a:hover {
+  opacity: 0.8;
+}
+
+/* REDES */
+.footer__socials {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Centrado */
+  gap: 16px; /* Espaciado un poco mayor */
+  margin-top: 20px;
+  padding: 0;
+}
+
+.footer__socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.footer__socials a:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .footer__content {
+    gap: 30px;
+  }
+  
+  .footer__menu a,
+  .separator,
+  .footer__contact p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer {
+    padding: 60px 20px;
+  }
+  
+  .footer__content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .footer__left,
+  .footer__right {
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer__menu-row {
+    justify-content: center;
+  }
+  
+  .footer__menu {
+    margin-bottom: 20px;
+  }
+  
+  .footer__logo {
+    width: 160px;
+    margin: 0 auto;
+  }
+  
+  .footer__socials {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 50px 15px;
+  }
+  
+  .footer__menu-row {
+    flex-direction: column; /* En móviles muy pequeños, en columna */
+    gap: 5px;
+  }
+  
+  .separator {
+    display: none; /* Ocultar separadores en móviles */
+  }
+  
+  .footer__menu a,
+  .footer__contact p,
+  .footer__copyright {
+    font-size: 14px;
+  }
+  
+  .footer__socials a {
+    width: 34px;
+    height: 34px;
+    background-size: 18px;
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 2000px) {
+  .footer__content {
+    max-width: 1800px;
+  }
+  
+  .footer__menu a,
+  .footer__contact p {
+    font-size: 18px;
+  }
+  
+  .footer__copyright {
+    font-size: 16px;
+  }
+  
+  .footer__logo {
+    width: 200px;
+  }
+}

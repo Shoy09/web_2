@@ -1,0 +1,45 @@
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+
+    <button
+      class="menu-icon"
+      type="button"
+      (click)="toggleMenu()"
+      aria-label="Abrir menú"
+      aria-controls="primary-navigation"
+      [attr.aria-expanded]="menuOpen"
+    >
+      <img src="icon/menu.svg" alt="" />
+    </button>
+
+
+
+    <!-- NAV LINKS -->
+    <ul id="primary-navigation" class="nav-links" [class.open]="menuOpen">
+      <li><a href="#" (click)="toggleProductos(); $event.preventDefault()">{{ currentTranslations['productos'] }}</a></li>
+      <li><a href="#">{{ currentTranslations['about'] }}</a></li>
+      <li><a href="#">{{ currentTranslations['contact'] }}</a></li>
+    </ul>
+
+    <!-- SEARCH -->
+    <div class="search-container" [class.search-open]="searchOpen">
+      <input
+        type="text"
+        class="search-input"
+        [placeholder]="currentTranslations['search']"
+        aria-label="Buscar en Terelion"
+      />
+      <button
+        class="search-icon"
+        type="button"
+        (click)="toggleSearch()"
+        aria-label="Abrir búsqueda"
+      >
+        <img src="icon/search.svg" alt="Buscar" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- PRODUCTOS SECTION -->
+  <div class="productos-wrapper" [class.show]="showProductos">
+    <app-productos></app-productos>
+  </div>

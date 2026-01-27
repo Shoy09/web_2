@@ -1,0 +1,110 @@
+<!-- LANGUAGE SELECTOR (ENCIMA DE TODO) -->
+<div class="language-selector" [class.dropdown-open]="dropdownOpen">
+  <button
+    class="language-toggle"
+    type="button"
+    aria-label="Seleccionar idioma"
+    (click)="toggleDropdown()"
+  >
+    <img src="/icon/globe.svg" alt="Idiomas" />
+    <span class="language-code">{{ selectedLanguage | uppercase }}</span>
+  </button>
+
+  <div class="language-dropdown" [class.open]="dropdownOpen">
+    <button 
+      *ngFor="let lang of languages"
+      class="language-option"
+      type="button"
+      (click)="changeLanguage(lang.code)"
+      [class.active]="selectedLanguage === lang.code"
+    >
+      {{ lang.name }}
+    </button>
+  </div>
+</div>
+
+<!-- OVERLAY GLOBAL -->
+<div
+  class="language-overlay"
+  *ngIf="dropdownOpen"
+  (click)="closeDropdown()"
+></div>
+
+
+<!-- LOGO CENTRAL -->
+<div class="logo-container">
+  <img src="/logo.png" alt="Terelion Logo" class="logo" />
+</div>
+
+<section class="hero">
+  <div class="overlay"></div>
+
+  <div class="content">
+    <!-- Logo aqui -->
+    <h1>
+      <span>{{ currentTranslations['heroTitleLine1'] }}</span>
+      <span>{{ currentTranslations['heroTitleLine2'] }}</span>
+      <span>{{ currentTranslations['heroTitleLine3'] }}</span>
+    </h1>
+    <br>
+    <button class="btn-primary">{{ currentTranslations['buttonText'] }}</button>
+  </div>
+</section>
+<!-- CARDS SECTION -->
+<section class="cards-section">
+  <div class="cards-container">
+    <!-- Card 1 -->
+    <div class="card card-history">
+      <div class="card-image" style="background-image: url('/tarjetas/historia.jpg');">
+        <div class="card-overlay"></div>
+      </div>
+      <div class="card-content">
+        <h3>DISCOVER THE HISTORY OF TERELION</h3>
+        <button class="btn-card">OUR HISTORY</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card-history">
+      <div class="card-image" style="background-image: url('/tarjetas/warrior.jpeg');">
+        <div class="card-overlay"></div>
+      </div>
+      <div class="card-content">
+        <h3>LET'S WELCOME OUR NEWEST MEMBER — WARRIOR</h3>
+        <button class="btn-card">EXPLORE WARRIOR</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-product">
+      <div class="card-image" style="background-image: url('/tarjetas/ridegeback.jpeg');">
+        <div class="card-overlay"></div>
+      </div>
+      <div class="card-content">
+        <h3>RIDGEBACK™ Hard rock drilling</h3>
+        <button class="btn-card">EXPLORE RIDGEBACK™</button>
+      </div>
+    </div>  
+
+    <!-- Card 4 -->
+    <div class="card card-product">
+      <div class="card-image" style="background-image: url('/tarjetas/ridegeback.jpeg');">
+        <div class="card-overlay"></div>
+      </div>
+      <div class="card-content">
+        <h3>AVENGER™ High-performance drilling</h3>
+        <button class="btn-card">EXPLORE AVENGER™</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <div class="about-container">
+    <h2>We are Terelion</h2>
+    <p>We are proud specialists in developing and manufacturing roller cone drill bits for the mining and construction industries. Texas is our homeland, but the global surface mining industry is our playground.</p>
+    <p>At Terelion we've always been devoted to be the best in our business. We constantly explore new innovative designs, new materials, new manufacturing methods and new engineering tools. Only to supply our customers with the most hard-wearing, efficient and cost-effective roller cone drill bits available.</p>
+    <a href="#" class="learn-more-link">LEARN MORE ABOUT US</a>
+  </div>
+</section>
