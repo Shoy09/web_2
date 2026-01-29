@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { VistaProductosComponent } from './vista-productos.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>; 
+describe('VistaProductosComponent', () => {
+  let component: VistaProductosComponent;
+  let fixture: ComponentFixture<VistaProductosComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavbarComponent]
+      imports: [VistaProductosComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(VistaProductosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

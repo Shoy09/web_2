@@ -1,28 +1,3 @@
-<!-- LANGUAGE SELECTOR (ENCIMA DE TODO) -->
-<div class="language-selector" [class.dropdown-open]="dropdownOpen">
-  <button
-    class="language-toggle"
-    type="button"
-    aria-label="Seleccionar idioma"
-    (click)="toggleDropdown()"
-  >
-    <img src="/icon/globe.svg" alt="Idiomas" />
-    <span class="language-code">{{ selectedLanguage | uppercase }}</span>
-  </button>
-
-  <div class="language-dropdown" [class.open]="dropdownOpen">
-    <button 
-      *ngFor="let lang of languages"
-      class="language-option"
-      type="button"
-      (click)="changeLanguage(lang.code)"
-      [class.active]="selectedLanguage === lang.code"
-    >
-      {{ lang.name }}
-    </button>
-  </div>
-</div>
-
 <!-- OVERLAY GLOBAL -->
 <div
   class="language-overlay"
@@ -30,26 +5,21 @@
   (click)="closeDropdown()"
 ></div>
 
-
-<!-- LOGO CENTRAL -->
-<div class="logo-container">
-  <img src="/logo.png" alt="Terelion Logo" class="logo" />
-</div>
-
 <section class="hero">
   <div class="overlay"></div>
 
   <div class="content">
     <!-- Logo aqui -->
     <h1>
-      <span>{{ currentTranslations['heroTitleLine1'] }}</span>
-      <span>{{ currentTranslations['heroTitleLine2'] }}</span>
-      <span>{{ currentTranslations['heroTitleLine3'] }}</span>
+      <span>Welcome to Terelion</span>
+      <span>Your Mining Solutions</span>
+      <span>Excellence in Drill Bits</span>
     </h1>
     <br>
-    <button class="btn-primary">{{ currentTranslations['buttonText'] }}</button>
+    <button class="btn-primary">Explore Products</button>
   </div>
 </section>
+ 
 <!-- CARDS SECTION -->
 <section class="cards-section">
   <div class="cards-container">

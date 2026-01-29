@@ -1,0 +1,186 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  width: 100%;
+}
+
+/* --- SECCIÓN 1: HERO (Taladro) --- */
+.hero-section {
+  padding: 40px 60px;
+  background-color: #fff;
+}
+
+.breadcrumbs {
+  color: #999;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  font-weight: 800;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.contact-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #5da05c; /* Verde claro */
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #5da05c;
+  padding-bottom: 2px;
+}
+
+.hero-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.main-product-img {
+  max-width: 80%;
+  height: auto;
+}
+
+/* --- SECCIÓN 2: FEATURES (Fondo Verde) --- */
+.features-section {
+  background-color: #388e3c; /* Verde intenso */
+  color: white;
+  padding: 60px;
+  /* Nota: Para el efecto "ondas" del fondo necesitarías una imagen de fondo real */
+}
+
+.features-grid-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 2 partes features, 1 parte downloads */
+  gap: 60px;
+}
+
+.features-section h2 {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* Grid interno para los items de features (2 columnas) */
+.features-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.feature-item h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Tarjeta blanca de descargas */
+.download-card {
+  background: white;
+  color: #333;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.download-card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.download-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.icon-download {
+  color: #388e3c;
+  font-weight: bold;
+}
+
+/* --- SECCIÓN 3: NOTICIAS --- */
+.news-section {
+  background-color: white;
+  padding: 60px;
+  text-align: center;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+}
+
+.news-title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #222;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* RESPONSIVE (Móviles) */
+@media (max-width: 900px) {
+  .hero-grid, .features-grid-layout, .news-grid {
+    grid-template-columns: 1fr; /* Todo a una columna */
+    gap: 40px;
+  }
+  
+  .features-list {
+    grid-template-columns: 1fr; /* Lista de features a una columna */
+  }
+
+  h1 { font-size: 2.5rem; }
+  
+  :host { padding: 0; }
+  .hero-section, .features-section, .news-section {
+    padding: 40px 20px;
+  }
+}

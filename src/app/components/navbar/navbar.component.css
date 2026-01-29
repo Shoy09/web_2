@@ -1,324 +1,737 @@
-/* ===========================
-   VARIABLES
-   =========================== */
+/* ================= VARIABLES ================= */
+:host {
+  --primary-green: #549e52; /* Verde Terelion extraído de la imagen */
+  --text-white: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.85);
+  --border-line: rgba(255, 255, 255, 0.25);
+  --nav-height: 90px;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+.respons {
+  display: none;
+}
+@media (max-width: 768px) {
+  .respons {
+    display: block;
+    margin-top: 10px;
+  }
+  @media (max-width: 768px) {
+  .back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--primary-green);
+    z-index: 2100;
+  }
 
-/* ===========================
-   NAVBAR
-   =========================== */
+  .back{
+    position: fixed;
+    z-index: 4000;
+  }
+  .back-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 👈 texto izquierda, X derecha */
+    padding: 0 18px;
+  }
+
+  .text p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 12px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .close-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+}
+.icons-redes {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+
+.icons-redes a i {
+  color: rgb(65, 64, 64);
+  font-size: 22px;        /* tamaño del icono */
+
+}
+
+.icons-redes a {
+  color: rgb(65, 64, 64);           /* o el color que uses */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icons-redes a:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+.respons li {
+  list-style: none;
+  color: rgb(65, 64, 64);
+  font-size: 15px;
+}
+
+/* Fila redes + idiomas */
+.social-lang-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 👈 redes izquierda, idiomas derecha */
+  
+}
+
+/* Idiomas */
+.language-selector-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* a la derecha */
+}
+
+.language-selector-simple p {
+  margin: 0;             /* 👈 elimina separación por defecto */
+  padding: 0;
+  line-height: 1.70;     /* 👈 controla qué tan juntos quedan */
+}
+@media (max-width: 768px) {
+  .nav-active .language-selector {
+    display: none !important;
+  }
+}
+
+
+.language-selector-simple .lang {
+  cursor: pointer;
+  color: rgb(65, 64, 64);
+  font-size: 16px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+
+.language-selector-simple .lang.active {
+  color: white;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ================= NAVBAR CONTAINER ================= */
 .navbar {
-  position: absolute;
-  top: 55px;
+  position: fixed;
+  top: 20px;
   left: 0;
   width: 100%;
-  height: 70px;
-  z-index: 2001;
-  margin: 0;
-  padding: 0 40px;
-
-  /* QUITAR TODO LO VISUAL */
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-
+  height: var(--nav-height);
+  padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-.navbar {
-  pointer-events: none;
-}
-
-.navbar * {
-  pointer-events: auto;
+  z-index: 2000;
+  background-color: transparent; /* Transparente por defecto */
+  transition: background-color 0.3s ease-in-out;
 }
 
-
-.brand {
-  color: #ffffff;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-decoration: none;
-  font-size: 16px;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
+/* Estado Activo (Fondo Verde) */
+.navbar.nav-active {
+  background-color: var(--primary-green);
 }
 
-.brand:hover {
-  color: #2ecc71;
-}
-
-/* ===========================
-   MENU ICON
-   =========================== */
-.menu-icon {
+/* ================= SECCIONES (Left, Center, Right) ================= */
+.nav-left {
+  flex: 1;
   display: flex;
   align-items: center;
+  order: 1;
+}
+
+.nav-center {
+  position: absolute;      /* saca el logo del flujo normal */
+  top: 50%;               /* verticalmente centrado */
+  left: 50%;              /* horizontalmente en el medio */
+  transform: translate(-50%, -50%); /* lo centra exacto según su propio ancho/alto */
+  z-index: 1000;          /* encima de otros elementos */
+  display: flex;
   justify-content: center;
-  width: 54px;
-  height: 54px;
-  background: transparent;
+  align-items: center;
+}
+
+
+.nav-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
+  order: 3;
+}
+
+/* --- Links Izquierda --- */
+.hamburger-btn {
+  background: none;
   border: none;
   cursor: pointer;
-  margin-top: -5px;
+  margin-right: 30px;
+  padding: 0;
+  display: flex;
+  transition: transform 0.3s ease;
 }
 
-.menu-icon img {
-  width: 32px;
-  height: 32px;
-  filter: invert(1);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  transform: rotate(180deg);
+.hamburger-btn:hover {
+  transform: scale(1.1);
 }
 
-.menu-icon:hover img {
-  transform: scale(1.15) rotate(180deg);
-  opacity: 0.8;
+.hamburger-btn.active svg {
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
 }
 
-/* ===========================
-   NAV LINKS
-   =========================== */
 .nav-links {
+  list-style: none;
   display: flex;
   gap: 30px;
-  list-style: none;
-  margin: 0;
   padding: 0;
-  margin-left: 20px;
-  margin-right: auto;
-}
-
-.nav-links li {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.nav-links li a {
-  font-family: var(--font-family-heading);
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-size: 15px;
-  letter-spacing: 1px;
-  padding: 8px 0;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-
-.nav-links li a:hover {
-  color: #2ecc71;
-  text-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
-}
-
-.nav-links li::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #2ecc71, transparent);
-  transition: width 0.3s ease;
-}
-
-.nav-links li:hover::after {
-  width: 100%;
-}
-
-/* ===========================
-   SEARCH
-   =========================== */
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
-}
-
-.search-input {
-  width: 200px;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(46, 204, 113, 0.3);
-  border-radius: 4px;
-  color: #ffffff;
-  font-size: 14px;
+  margin: 0;
   transition: all 0.3s ease;
 }
 
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
+.nav-links.mobile-menu-open {
+  position: absolute;
+  top: var(--nav-height);
+  left: 0;
+  width: 100%;
+  flex-direction: column;
+  background-color: var(--primary-green);
+  gap: 0;
+  padding: 20px 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.search-input:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(46, 204, 113, 0.6);
-  box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+.nav-links.mobile-menu-open li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.search-input:focus::placeholder,
-.search-input:not(:placeholder-shown)::placeholder {
-  opacity: 0;
+.nav-links.mobile-menu-open li:last-child {
+  border-bottom: none;
 }
 
-.search-icon {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+.nav-links a {
+  color: var(--text-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active-link {
+  opacity: 1;
+  font-weight: 700; /* Se pone un poco más grueso al pasar */
+}
+
+/* --- Logo Centro --- */
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  order: 2;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.logo-svg {
+  height: 40px;
+  width: 40px;
+  margin-bottom: -5px;
+}
+
+.logo-text {
+  text-transform: lowercase; /* El logo de Terelion texto suele ser minúscula o estilizado */
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: -1px;
+}
+
+/* --- Utilidades Derecha --- */
+.language-selector {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  position: relative;
+  transition: opacity 0.2s;
 }
 
-.search-icon img {
-  width: 30px;
-  height: 30px;
-  filter: invert(1);
-}
-
-.search-icon:hover img {
-  transform: scale(1.15);
+.language-selector:hover {
   opacity: 0.8;
 }
 
-/* ===========================
-   RESPONSIVE
-   =========================== */
+.language-dropdown {
+  position: absolute;
+  top: calc(var(--nav-height) + 10px);
+  right: 0;
+  background-color: var(--primary-green);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 3000;
+  min-width: 150px;
+  overflow: hidden;
+  animation: slideDown 0.2s ease-out;
+}
 
-/* Tablet / Mobile */
-@media (max-width: 992px) {
-  .navbar {
-    padding: 0 16px;
-  }
-
-  .brand {
-    font-size: 15px;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 70px);
-    background: transparent;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
+@keyframes slideDown {
+  from {
     opacity: 0;
-    pointer-events: none;
     transform: translateY(-10px);
-    transition: all 0.3s ease;
   }
-
-  .nav-links.open {
+  to {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .search-input {
-    width: 120px;
-    font-size: 14px;
   }
 }
 
-/* Mobile */
-@media (max-width: 576px) {
-  .navbar {
-    height: 64px;
-    padding: 0 16px;
-  }
-
-  .menu-icon {
-    margin-left: 0;
-  }
-
-
-
-  .nav-links {
-    gap: 20px;
-  }
-
-  .search-container {
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
-
-  .search-container:not(.search-open) {
-    width: auto;
-    gap: 0;
-  }
-
-  .search-container.search-open {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 64px;
-    background: transparent;
-    padding: 0 16px;
-    gap: 8px;
-    justify-content: space-between;
-    z-index: 999;
-  }
-
-  .search-input {
-    max-width: 0;
-    padding: 0;
-    font-size: 13px;
-    transition: max-width 0.3s ease, padding 0.3s ease;
-  }
-
-  .search-open .search-input {
-    max-width: 100%;
-    padding: 6px 0;
-  }
-
-  .search-icon {
-    flex-shrink: 0;
-  }
+.language-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ===========================
-   PRODUCTOS WRAPPER
-   =========================== */
-.productos-wrapper {
+.language-dropdown button:last-child {
+  border-bottom: none;
+}
+
+.language-dropdown button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.language-dropdown button.active {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+/* ================= MEGA MENU (Fondo Verde) ================= */
+.mega-menu-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: transparent;
-  z-index: 1500;
-  pointer-events: none;
+  background-color: var(--primary-green);
+  z-index: 1000; /* Detrás del Navbar (2000) */
+  padding-top: var(--nav-height); /* Espacio para el navbar */
   opacity: 0;
   visibility: hidden;
   overflow-y: auto;
-  overflow-x: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.productos-wrapper.show {
+.mega-menu-wrapper.show {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
 }
 
-.productos-wrapper app-productos {
-  position: relative;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 50px;
+  color: white;
+}
+
+/* --- Títulos Principales (PRODUCTS, TECHNOLOGY) --- */
+.menu-header {
+  border-bottom: 1px solid var(--border-line);
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+}
+
+.menu-header h2 {
+  font-size: 18px;
+  font-weight: 800; /* Muy grueso */
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 0;
+  color: #1e401e; /* Color oscuro para el título principal "PRODUCTS" si quieres contraste, o blanco */
+  /* En tu imagen 14c75c, "PRODUCTS" parece verde oscuro o negro con baja opacidad? 
+     Ajuste: En la imagen parece ser un texto oscuro sobre el verde. 
+     Vamos a ponerlo oscuro como en la referencia. */
+  color: rgba(0, 0, 0, 0.4); 
+}
+
+/* --- Grid de Columnas --- */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 40px;
+}
+
+/* Títulos de Columna (ROLLER CONE BITS, etc.) */
+.col-title {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #1a331a; /* Verde muy oscuro/negro, estilo "etiqueta" */
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+
+/* Lista de Enlaces */
+.link-list {
+  list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.link-list li {
+  margin-bottom: 12px;
+}
+
+.link-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px; /* Tamaño grande y legible como en la foto */
+  font-weight: 600; /* Semi-bold */
+  text-transform: uppercase; /* Todo mayúsculas */
+  letter-spacing: 0.5px; /* Un poco de aire entre letras */
   display: block;
+  line-height: 1.2;
+}
+
+.link-list a:hover {
+  text-decoration: underline;
+}
+
+/* Margen extra para separar secciones */
+.mt-large {
+  margin-top: 60px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  :host {
+    --nav-height: 80px;
+  }
+  
+  .navbar { 
+    padding: 0 20px; 
+  }
+  
+  .hamburger-btn { 
+    display: flex;
+    margin-right: 20px;
+  }
+  
+  .nav-links:not(.mobile-menu-open) { 
+    display: none; 
+  }
+  
+  .nav-links.mobile-menu-open {
+    padding: 20px 0;
+  }
+  
+  .label-text { 
+    display: none; 
+  }
+  
+  .grid-layout { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .container { 
+    padding: 20px; 
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    --nav-height: 70px;
+  }
+  
+  .navbar { 
+    padding: 0 15px;
+    justify-content: center;
+  }
+  
+  /* DESKTOP: [ ☰ + links ]   [ LOGO ]   [ search ]
+     MOBILE: [ search ]   [ LOGO ]   [ ☰ ] */
+  
+  .nav-left {
+    order: 3;
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+  
+  .nav-center {
+    order: 2;
+    flex: 0 0 auto;
+    margin: 0 auto;
+  }
+  
+  
+  .hamburger-btn { 
+    margin-right: 0;
+  }
+  
+  .language-selector {
+    display: none;
+  }
+  
+  .search-trigger {
+    margin-right: 15px;
+  }
+  
+  .nav-links.mobile-menu-open {
+    padding: 15px 30px;
+  }
+  
+  .right-item {
+    gap: 8px;
+  }
+  
+  .container { 
+    padding: 15px; 
+  }
+  
+  .menu-header h2 {
+    font-size: 16px;
+  }
+  
+  .link-list a {
+    font-size: 14px;
+  }
+  
+  .label-text {
+    display: none;
+  }
+}
+
+
+
+
+
+/* ================= OVERLAY BÚSQUEDA ================= */
+.search-overlay {
+  position: absolute; /* O fixed si quieres que persista al hacer scroll */
+  bottom: 0;
+  left: 0;
   width: 100%;
+  height: 90px; /* Misma altura que tu navbar */
+  background-color: #549e52; /* El verde de tu marca */
+  z-index: 2100; /* Debe ser el elemento más alto (encima del navbar y menú) */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Clase para mostrarlo */
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Contenedor interno para limitar el ancho */
+.search-container-inner {
+  width: 100%;
+  max-width: 1000px; /* Ajusta qué tan ancha quieres la línea */
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Icono Lupa Grande */
+.search-icon-large {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1); /* Blanco */
+  opacity: 0.9;
+}
+
+/* El Input Principal */
+.search-input-field {
+  flex: 1; /* Ocupa todo el espacio central */
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white; /* La línea blanca inferior */
+  color: white;
+  font-size: 18px; /* Texto grande */
+  font-family: 'Segoe UI', sans-serif;
+  padding: 10px 5px;
+  outline: none; /* Quita el borde azul del navegador */
+}
+
+/* Estilo del Placeholder (Texto fantasma) */
+.search-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+/* Botón Cerrar X */
+.close-search-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.close-search-btn:hover {
+  transform: scale(1.1); /* Efecto zoom al pasar mouse */
+}
+
+
+
+
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-left { order: 3; margin-left: auto; }   /* hamburguesa derecha */
+  .nav-right { order: 1; margin-right: auto; } /* lupa izquierda */
+  .logo-img { max-height: 40px; } }
+
+/* Contenedor derecho alineado al final */
+.nav-right {
+  display: flex;
+  flex-direction: column; /* Cambiado de fila a columna */
+  align-items: flex-end;  /* Alinea todo a la derecha */
+  justify-content: center;
+  gap: 20px;  
+}
+
+/* Estilo común para cada fila (Idioma y Buscador) */
+.right-item {
+  display: flex;
+  align-items: center; /* Centra verticalmente texto e icono */
+  gap: 10px;           /* Espacio entre el texto y el icono */
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.right-item:hover {
+  opacity: 0.8;
+}
+
+/* Texto (English / Search...) */
+.label-text {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+/* Iconos */
+.icon-sm {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-md {
+  width: 22px;
+  height: 22px;
+}
+
+.search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.search-input {
+  width: 220px;
+  background: transparent;
+  border: none;           
+  border-bottom: 2px solid transparent; 
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 0;
+  transition: border-color 0.3s;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom-color: #fff; 
+  }
+}
+
+svg {
+  pointer-events: none;
+}
+
+
+.about-us-menu {
+  position: relative;
+
+  .submenu {
+    display: block; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #222; 
+    padding: 5px 0;
+    border-radius: 4px;
+    min-width: 150px;
+    z-index: 1000;
+
+    li {
+      a {
+        display: block;
+        padding: 8px 12px;
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
 }

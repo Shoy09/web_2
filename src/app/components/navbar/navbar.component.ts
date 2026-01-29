@@ -1,54 +1,72 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { TranslationService } from '../../services/translation.service';
-import { ProductosComponent } from '../productos/productos.component';
-
 @Component({
-  selector: 'app-navbar',
-  imports: [CommonModule, ProductosComponent],
+  selector: 'app-nvbar',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
-  menuOpen = false;
-  searchOpen = false;
-  showProductos = false;
-  selectedLanguage: string = '';
-  currentTranslations: { [key: string]: string } = {};
-  private destroy$ = new Subject<void>();
+export class NavbarComponent implements OnInit {
 
-  constructor(private translationService: TranslationService) {}
+  menuOpen = false;
+  showProductos = false;
+  showAbout = false;
+  searchOpen = false;
+
+  isMobileView = false;
+  private readonly MOBILE_WIDTH = 768;
 
   ngOnInit() {
-    this.selectedLanguage = this.translationService.getCurrentLanguage();
-    this.currentTranslations = this.translationService.getTranslations();
+    this.updateViewMode();
+  }
 
-    this.translationService
-      .getCurrentLanguage$()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.currentTranslations = this.translationService.getTranslations();
-      });
+  private updateViewMode() {
+    this.isMobileView = window.innerWidth <= this.MOBILE_WIDTH;
+
+    if (!this.isMobileView) {
+      this.menuOpen = false;
+      this.showProductos = false;
+      this.showAbout = false;
+    }
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.updateViewMode();
   }
 
   toggleMenu() {
+    if (!this.isMobileView) return;
     this.menuOpen = !this.menuOpen;
+    if (!this.menuOpen) {
+      this.showProductos = false;
+      this.showAbout = false;
+    }
   }
 
-  toggleSearch() {
-    this.searchOpen = !this.searchOpen;
-  }
-
-  toggleProductos() {
+  toggleProductos(event?: Event) {
+    if (event) event.preventDefault();
     this.showProductos = !this.showProductos;
-    this.menuOpen = false;
+    if (this.isMobileView && !this.menuOpen) this.menuOpen = true;
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+  toggleAbout(event?: Event) {
+    if (event) event.preventDefault();
+    if (!this.isMobileView) return;
+    this.showAbout = !this.showAbout;
   }
+
+  closeMenus() {
+    if (!this.isMobileView) return;
+    this.menuOpen = false;
+    this.showProductos = false;
+    this.showAbout = false;
+  }
+
+toggleSearch() {
+  this.searchOpen = !this.searchOpen;
+}
+
 }

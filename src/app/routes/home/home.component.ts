@@ -1,38 +1,23 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
-import { TranslationService } from '../../services/translation.service';
-import { CommonModule, UpperCasePipe } from '@angular/common';
+import { Subject } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [UpperCasePipe, CommonModule],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  selectedLanguage: string = '';
-  languages: any[] = [];
-  currentTranslations: { [key: string]: string } = {};
+
   dropdownOpen: boolean = false;
   private destroy$ = new Subject<void>();
 
-  constructor(private translationService: TranslationService) {
-    this.languages = this.translationService.getLanguages();
-  }
+  constructor() { }
 
   ngOnInit() {
-    // Obtener el idioma actual
-    this.selectedLanguage = this.translationService.getCurrentLanguage();
-    this.currentTranslations = this.translationService.getTranslations();
-
-    // Suscribirse a cambios de idioma
-    this.translationService
-      .getCurrentLanguage$()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((language: string) => {
-        this.selectedLanguage = language;
-        this.currentTranslations = this.translationService.getTranslations();
-      });
+    // Inicialización si es necesaria
   }
 
   ngOnDestroy() {
@@ -40,33 +25,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-toggleDropdown() {
-  this.dropdownOpen = !this.dropdownOpen;
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
 
-  if (this.dropdownOpen) {
-    document.body.classList.add('language-open');
-  } else {
+    if (this.dropdownOpen) {
+      document.body.classList.add('language-open');
+    } else {
+      document.body.classList.remove('language-open');
+    }
+  }
+
+  closeDropdown() {
+    this.dropdownOpen = false;
     document.body.classList.remove('language-open');
   }
-}
 
-closeDropdown() {
-  this.dropdownOpen = false;
-  document.body.classList.remove('language-open');
-}
-
-changeLanguage(languageCode: string) {
-  this.translationService.setLanguage(languageCode);
-  this.closeDropdown();
-}
-
-@HostListener('window:scroll')
-onWindowScroll() {
-  if (this.dropdownOpen && window.scrollY > 350) {
-    this.closeDropdown();
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    if (this.dropdownOpen && window.scrollY > 350) {
+      this.closeDropdown();
+    }
   }
-}
-
-
-
 }

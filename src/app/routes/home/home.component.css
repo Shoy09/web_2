@@ -15,7 +15,7 @@
   z-index: 1000;
   pointer-events: all; /* CAPTURA TODOS LOS CLICKS */
 }
-
+ 
 
 .language-toggle {
   display: flex;
@@ -302,7 +302,7 @@
 .cards-section {
   width: 100%;
   padding: 0px 20px;
-  margin-top: -70px;
+  margin-top: 0px;
   background-color: #f8f8f8;
 }
 
