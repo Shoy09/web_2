@@ -1,5 +1,5 @@
 <section class="history-hero">
-  <h1>NUESTRA HISTORIA</h1>
+  <h1>{{ 'HISTORY.TITLE' | translate }}</h1>
 </section>
 
 <section class="timeline">
@@ -11,7 +11,7 @@
       <div class="content">
         <div class="story" *ngFor="let story of item.stories">
           <h3>{{ story.year }}</h3>
-          <p>{{ story.text }}</p>
+          <p>{{ story.text | translate }}</p>
         </div>
       </div>
 

@@ -1,0 +1,39 @@
+<div class="page-container">
+  
+  <header class="section-header">
+    <div class="breadcrumbs">
+      <span>{{ 'PRODUCTS.BREADCRUMB_1' | translate }}</span> / <span>{{ 'PRODUCTS.BREADCRUMB_2' | translate }}</span> / <span>{{ 'PRODUCTS.BREADCRUMB_3' | translate }}</span>
+    </div>
+
+    <div class="header-content">
+      <h1 class="main-title">{{ 'PRODUCTS.TITLE' | translate }}</h1>
+      <p class="header-description">
+        {{ 'PRODUCTS.DESCRIPTION' | translate }}
+      </p>
+    </div>
+  </header>
+
+  <section class="products-grid">
+    <div class="product-card" *ngFor="let product of products">
+      <div class="card-image">
+        <img [src]="product.image" alt="{{ product.title }}">
+      </div>
+      
+      <div class="card-content">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <a [href]="product.link" class="view-link">
+          {{ 'PRODUCTS.VIEW' | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <p>
+      {{ 'PRODUCTS.INFO_TEXT' | translate }}
+    </p>
+    
+    <a href="#" class="contact-btn">{{ 'PRODUCTS.CONTACT_US' | translate }}</a>
+  </section>
+
+</div>

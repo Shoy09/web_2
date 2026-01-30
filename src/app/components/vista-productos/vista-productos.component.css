@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.page-container {
+  margin-top: 90px;
+}
+
 /* --- SECCIÓN 1: HERO (Taladro) --- */
 .hero-section {
   padding: 40px 60px;
@@ -180,6 +184,9 @@ h1 {
   h1 { font-size: 2.5rem; }
   
   :host { padding: 0; }
+  .page-container {
+    margin-top: 90px;
+  }
   .hero-section, .features-section, .news-section {
     padding: 40px 20px;
   }

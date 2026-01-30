@@ -1,0 +1,96 @@
+{
+  "NAV": {
+    "PRODUCTS": "Products",
+    "ABOUT": "About",
+    "CONTACT": "Contact",
+    "SEARCH": "Search terelion.com...",
+    "FOLLOWUS": "Follow us on"
+  },
+  "NAV_MENU": {
+    "PRODUCTS": "Products",
+    "ROLLERCONE": "Roller Cone Bits",
+    "RIDGEBACK": "RIDGEBACK™",
+    "AVENGER": "AVENGER™",
+    "DFORCE": "D-FORCE™",
+    "TARGET": "TARGET™",
+    "PILOTHOLE": "Pilot Hole Openers",
+    "REVERSECIRCULATION": "Reverse Circulation",
+    "RPS": "RPS",
+    "RPS_GEN3": "RPS Gen3",
+    "RPS_GEN2": "RPS Gen2",
+    "RPS_BITS": "RPS Bits",
+    "DOWNTHEHOLE": "Down The Hole",
+    "WARRIOR_HAMMERS": "Warrior Hammers",
+    "WARRIOR_BITS": "Warrior Bits",
+    "TECHNOLOGY": "Technology",
+    "ADVANCED_MODELING": "Advanced Modeling",
+    "RCPRO": "RC-PRO",
+    "METALLURGY": "Metallurgy",
+    "FIELDSERVICE": "Field Service",
+    "SEALTEST": "Seal Test",
+    "ABOUTUS": "About Us",
+    "OURHISTORY": "Our History"
+  },
+  "HOME": {
+    "TITLE1": "WHAT IT TAKES",
+    "TITLE2": "TO BREAK",
+    "TITLE3": "THROUGH",
+    "LEARN_MORE": "learn more",
+    "DISCOVER_HISTORY": "DISCOVER THE HISTORY OF TERELION",
+    "OUR_HISTORY": "OUR HISTORY",
+    "WELCOME_WARRIOR": "LET'S WELCOME OUR NEWEST MEMBER — WARRIOR",
+    "EXPLORE_WARRIOR": "EXPLORE WARRIOR",
+    "RIDGEBACK_TITLE": "RIDGEBACK™ Hard rock drilling",
+    "EXPLORE_RIDGEBACK": "EXPLORE RIDGEBACK™",
+    "AVENGER_TITLE": "AVENGER™ High-performance drilling",
+    "EXPLORE_AVENGER": "EXPLORE AVENGER™",
+    "ABOUT_TITLE": "We are Terelion",
+    "ABOUT_P1": "We are proud specialists in developing and manufacturing roller cone drill bits for the mining and construction industries. Texas is our homeland, but the global surface mining industry is our playground.",
+    "ABOUT_P2": "At Terelion we've always been devoted to be the best in our business. We constantly explore new innovative designs, new materials, new manufacturing methods and new engineering tools. Only to supply our customers with the most hard-wearing, efficient and cost-effective roller cone drill bits available.",
+    "LEARN_MORE_ABOUT": "LEARN MORE ABOUT US"
+  },
+  "PRODUCTS": {
+    "BREADCRUMB_1": "PRODUCTS",
+    "BREADCRUMB_2": "DRILLING PRODUCTS",
+    "BREADCRUMB_3": "ROLLER CONE BITS",
+    "TITLE": "ROLLER CONE BITS",
+    "DESCRIPTION": "Roller cone drill bits for the mining and construction industry. Visit the pages to learn more about our high performance drilling tools, roller cone bits.",
+    "INFO_TEXT": "With our wide selection of our products, Roller Cone Bits; and with our expertise and knowledge that we have been sustaining for a long time, we are always be there for our customers in mining and construction industry. See our products and contact us to ask more information or service.",
+    "CONTACT_US": "CONTACT US",
+    "VIEW": "VIEW"
+  },
+  "FOOTER": {
+    "ABOUT_WEBSITE": "About this website",
+    "COOKIES": "Cookies",
+    "LEGAL_NOTICE": "Legal notice",
+    "DATA_PRIVACY": "Data privacy",
+    "COPYRIGHT": "Copyright © {{year}} - Terelion, LLC",
+    "CALL_US": "Call us",
+    "EMAIL_US": "Email us",
+    "EMAIL_ADDRESS": "infoterelion.com"
+  },
+  "ABOUTUS": {
+    "TITLE": "About us",
+    "HEADING": "About us",
+    "PARAGRAPH_1": "We are proud specialists in developing and manufacturing roller cone drill bits for the mining and construction industries. Texas is our homeland, but the global surface mining industry is our playground. At Terelion, we have always strived to be the best in our business. We constantly explore new innovative designs, new materials, new manufacturing methods and new engineering tools. Only to supply our customers with the most durable, efficient and cost-effective roller cone drill bits available.",
+    "HEADING_2": "Get ready for your discovery.",
+    "PARAGRAPH_2": "Wherever you look, the world is full of challenging tasks that humanity must solve. At Terelion, we specialize in those challenges presented by drilling in blasthole wells in surface mining. We have always strived to be the best in our business. We constantly explore new innovative designs, new materials, new manufacturing methods and new engineering tools. All with the goal of manufacturing the most durable, efficient and cost-effective roller cone drill bits available. Some of our innovations are small. Others lead to breakthroughs that affect the entire industry. Stay tuned and you will be among the first to know when Terelion launches the next innovation in rock drilling."
+  },
+  "HISTORY": {
+    "TITLE": "OUR HISTORY"
+  },
+  "VISTA_PRODUCTOS": {
+    "BREADCRUMB": "PRODUCTS / ROLLER CONE BITS /",
+    "TITLE": "RIDGEBACK™ – HARD ROCK DRILLING",
+    "DESCRIPTION_1": "Rotary bits for blasthole drilling in hard rock. Specially designed shirttail to assist in rapid cuttings evacuation. High load open bearings, robust cutting structure and HET carbide treatment provide high penetration rates and long life. Vented cones (9\" diameter and up) provide for additional bearing cleaning and heat reduction.",
+    "DESCRIPTION_2": "RIDGEBACK™ products contain longer life bearings, additional gage protection and improved cutting structure elements for use in high pull-down applications.",
+    "CONTACT_MORE": "CONTACT US TO HAVE MORE INFORMATION",
+    "FEATURES_TITLE": "FEATURES AND BENEFITS",
+    "NAIL_NOZZLE": "NAIL NOZZLE RETENTION",
+    "NAIL_NOZZLE_DESC": "Even in the most abrasive conditions, the loss of nozzles is eliminated.",
+    "RIDGEBACK_FEATURE": "RIDGEBACK™",
+    "RIDGEBACK_DESC": "This patented shirttail feature allows cuttings to be removed from the hole effectively. This means reduced regrinding.",
+    "REINFORCED_SHIRTTAIL": "REINFORCED SHIRTTAIL",
+    "REINFORCED_DESC": "A pattern of tungsten carbide inserts and welded hardmetal resist wear and protect the bearing."
+  }
+}

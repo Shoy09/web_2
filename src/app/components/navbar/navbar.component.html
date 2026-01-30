@@ -1,5 +1,5 @@
 <!-- SECCIÓN NAVBAR PRINCIPAL -->
-<nav class="navbar" [class.nav-active]="showProductos || menuOpen">
+<nav class="navbar" [class.nav-active]="showProductos || menuOpen" [class.nav-product-page]="isProductPage">
   
   <!-- SECCIÓN IZQUIERDA DEL NAVBAR (HAMBURGUESA Y ENLACES) -->
   <div class="nav-left">
@@ -12,35 +12,34 @@
   <!-- Línea inferior -->
   <rect x="6" y="16" width="16" height="2" fill="white" />
 </svg>
-    </button>
+    </button> 
 
     <!-- SECCIÓN LISTA DE ENLACES DE NAVEGACIÓN -->
     <ul class="nav-links" [class.mobile-menu-open]="menuOpen">
-      <li><a href="#" (click)="toggleProductos($event)" [class.active-link]="showProductos">Products</a></li>
 
-  <li class="about-us-menu"> <a href="#" (click)="toggleAbout($event)">About Us</a>
-    <!-- Submenú -->
+      <li><a href="#" (click)="toggleProductos($event)" [class.active-link]="showProductos">{{ 'NAV.PRODUCTS' | translate }}</a></li>
+      
+      <li class="about-us-menu"><a href="#" (click)="toggleAbout($event)" [class.active-link]="showAbout">{{ 'NAV.ABOUT' | translate }}</a></li>
 
-</li>
-      <li><a href="#" (click)="closeMenus()">Contact</a></li>
+      <li><a href="#" (click)="closeMenus()">{{ 'NAV.CONTACT' | translate }}</a></li>
 
-<!-- SECCIÓN CONTENIDO DE FONDO PARA MENÚ MÓVIL -->
-<div class="back" *ngIf="menuOpen">
-  <div class="back-content">
-    <div class="text">
-      <p>Menu</p>
+    <!-- SECCIÓN CONTENIDO DE FONDO PARA MENÚ MÓVIL -->
+    <div class="back" *ngIf="menuOpen">
+      <div class="back-content">
+        <div class="text">
+          <p>Menu</p>
+        </div> 
+  
+        <button class="close-btn" (click)="toggleMenu()" aria-label="Cerrar menú">
+          ✕
+        </button>
+      </div>
     </div>
-
-    <button class="close-btn" (click)="toggleMenu()" aria-label="Cerrar menú">
-      ✕
-    </button>
-  </div>
-</div>
 
 
       <!-- SECCIÓN RESPONSIVA (REDES SOCIALES E IDIOMAS - SOLO PARA PANTALLAS PEQUEÑAS) -->
        <div class="respons">
-  <li>Follow us on</li>
+  <li>{{ 'NAV.FOLLOWUS' | translate }}</li>
 
   <div class="social-lang-row">
     <!-- REDES SOCIALES -->
@@ -61,10 +60,17 @@
 
     <!-- SELECTOR DE IDIOMAS SIMPLIFICADO -->
     <div class="language-selector-simple">
-      <p><span class="lang active">English</span></p>
-      <p><span class="lang">Español</span></p>
-      <p><span class="lang">Português</span></p>
-    </div>
+  <p *ngFor="let lang of languages">
+    <span
+      class="lang"
+      [class.active]="currentLang === lang.code"
+      (click)="selectLanguage(lang.code)"
+    >
+      {{ lang.label }}
+    </span>
+  </p>
+</div>
+
   </div>
 </div>
 
@@ -73,23 +79,53 @@
 
   <!-- SECCIÓN CENTRAL DEL NAVBAR (LOGO) -->
   <div class="nav-center">
-    <div class="logo">
-        <img src="/logo.png" alt="Terelion Logo" class="logo" />
+    <!-- Logo blanco para otras páginas -->
+    <div class="logo" *ngIf="!isProductPage">
+        <img src="/logo_blanco.png" alt="Terelion Logo" class="logo" />
     </div>
+
+    <!-- Logo verde para páginas de productos -->
+    <div class="logo-green" *ngIf="isProductPage">
+    <div class="logo-pag">
+        <img src="/logo_verde.png" alt="Terelion Logo" class="logo" />
+    </div>
+  </div>
   </div>
 
   <!-- SECCIÓN DERECHA DEL NAVBAR (IDIOMAS Y BÚSQUEDA) -->
   <div class="nav-right">
-  
 <!-- SELECTOR DE IDIOMAS (NO SE MUESTRA EN MÓVIL CON MENÚ ABIERTO) -->
-<div
-  class="right-item language-selector" *ngIf="!isMobileView">
+<div class="right-item language-selector" *ngIf="!isMobileView">
 
-     <span class="label-text">English</span>
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-      </svg>  </div>
+  <button
+    class="language-btn"
+    (click)="toggleLangDropdown()"
+    aria-label="Language selector"
+  >
+ <span class="label-text">
+  {{ currentLanguageLabel }}
+</span>
+
+
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </svg>
+  </button>
+
+  <!-- DROPDOWN -->
+  <div class="language-dropdown" *ngIf="langDropdownOpen">
+    <button
+      *ngFor="let lang of languages"
+      (click)="selectLanguage(lang.code)"
+      [class.active]="currentLang === lang.code"
+    >
+      {{ lang.label }}
+    </button>
+  </div>
+
+</div>
+
 
   <!-- BOTÓN DE BÚSQUEDA -->
 <div class="nav-right">
@@ -103,7 +139,7 @@
       <input
         type="text"
         class="search-input"
-        placeholder="Search terelion.com..."
+        [placeholder]="'NAV.SEARCH' | translate"
         *ngIf="searchOpen"
       />
     </div>
@@ -120,7 +156,7 @@
     <input 
       type="text" 
       class="search-input-field" 
-      placeholder="Buscar terelion.com..." 
+      [placeholder]="'NAV.SEARCH' | translate"
       autofocus 
     />
 
@@ -147,7 +183,7 @@
     
     <!-- ENCABEZADO DEL MENÚ DE PRODUCTOS -->
     <div class="menu-header">
-      <h2>Products</h2>
+      <h2>{{ 'NAV_MENU.PRODUCTS' | translate }}</h2>
     </div>
 
     <!-- LAYOUT EN GRID PARA CATEGORÍAS DE PRODUCTOS -->
@@ -155,51 +191,66 @@
       
       <!-- COLUMNA 1: ROLLER CONE BITS -->
       <div class="column">
-        <h3 class="col-title">Roller Cone Bits</h3>
+        <h3 class="col-title">{{ 'NAV_MENU.ROLLERCONE' | translate }}</h3>
         <ul class="link-list">
-          <li><a href="#">Ridgeback™ – Hard Rock Drilling</a></li>
-          <li><a href="#">Avenger™ – High-Performance Drilling</a></li>
-          <li><a href="#">D-Force™ – Drilling In Abrasive Formations</a></li>
-          <li><a href="#">Target™ – HDD Series</a></li>
-          <li><a href="#">Pilot Hole Bits</a></li>
-          <li><a href="#">Reverse Circulation Bits</a></li>
+          <li><a href="#">{{ 'NAV_MENU.RIDGEBACK' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.AVENGER' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.DFORCE' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.TARGET' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.PILOTHOLE' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.REVERSECIRCULATION' | translate }}</a></li>
         </ul>
       </div>
 
       <!-- COLUMNA 2: RPS -->
       <div class="column">
-        <h3 class="col-title">RPS</h3>
+        <h3 class="col-title">{{ 'NAV_MENU.RPS' | translate }}</h3>
         <ul class="link-list">
-          <li><a href="#">Rotary Percussion System™ (RPS) Gen 3</a></li>
-          <li><a href="#">Rotary Percussion System™ (RPS) Gen 2</a></li>
-          <li><a href="#">Rotary Percussion Bits (RP Bits)</a></li>
+          <li><a href="#">{{ 'NAV_MENU.RPS_GEN3' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.RPS_GEN2' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.RPS_BITS' | translate }}</a></li>
         </ul>
       </div>
 
       <!-- COLUMNA 3: DOWN THE HOLE -->
       <div class="column">
-        <h3 class="col-title">Down The Hole</h3>
+        <h3 class="col-title">{{ 'NAV_MENU.DOWNTHEHOLE' | translate }}</h3>
         <ul class="link-list">
-          <li><a href="#">Warrior Hammers</a></li>
-          <li><a href="#">Warrior Bits</a></li>
+          <li><a href="#">{{ 'NAV_MENU.WARRIOR_HAMMERS' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.WARRIOR_BITS' | translate }}</a></li>
         </ul>
       </div>
     </div>
 
     <!-- ENCABEZADO DE TECNOLOGÍA -->
     <div class="menu-header mt-large">
-      <h2>Technology</h2>
+      <h2>{{ 'NAV_MENU.TECHNOLOGY' | translate }}</h2>
     </div>
     
     <!-- LAYOUT EN GRID PARA TECNOLOGÍA -->
     <div class="grid-layout">
       <div class="column">
         <ul class="link-list">
-          <li><a href="#">Advanced Modeling Package – AMP</a></li>
-          <li><a href="#">RCPro™ Technology</a></li>
-          <li><a href="#">Metallurgy Lab</a></li>
-          <li><a href="#">Field Service Engineers</a></li>
-          <li><a href="#">Seal Test Machine</a></li>
+          <li><a href="#">{{ 'NAV_MENU.ADVANCED_MODELING' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.RCPRO' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.METALLURGY' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.FIELDSERVICE' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.SEALTEST' | translate }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- SECCIÓN MEGA MENÚ ABOUT US -->
+<div class="mega-menu-wrapper" [class.show]="showAbout">
+  <div class="container">
+
+    <div class="grid-layout">
+      <div class="column">
+        <ul class="link-list">
+          <li><a href="#">{{ 'NAV_MENU.ABOUTUS' | translate }}</a></li>
+          <li><a href="#">{{ 'NAV_MENU.OURHISTORY' | translate }}</a></li>
         </ul>
       </div>
     </div>

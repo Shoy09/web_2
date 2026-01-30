@@ -13,7 +13,7 @@
 @media (max-width: 768px) {
   .respons {
     display: block;
-    margin-top: 10px;
+    margin-top: 10px; 
   }
   @media (max-width: 768px) {
   .back {
@@ -135,22 +135,67 @@
 
 /* ================= NAVBAR CONTAINER ================= */
 .navbar {
-  position: fixed;
-  top: 20px;
+  position: fixed; /* Cambiado a fixed */
+  top: 0;
   left: 0;
   width: 100%;
   height: var(--nav-height);
   padding: 0 20px;
   display: flex;
   align-items: center;
-  z-index: 2000;
-  background-color: transparent; /* Transparente por defecto */
+  z-index: 2000; /* Mayor que mega-menu-wrapper */
+  background-color: transparent;
   transition: background-color 0.3s ease-in-out;
 }
 
 /* Estado Activo (Fondo Verde) */
 .navbar.nav-active {
   background-color: var(--primary-green);
+}
+
+/* Estado Página de Producto (Texto Negro, fondo transparente) */
+.navbar.nav-product-page {
+  background-color: transparent;
+}
+
+.navbar.nav-product-page .nav-links a {
+  color: #000000;
+}
+
+.navbar.nav-product-page .hamburger-btn svg rect {
+  fill: #000000;
+}
+
+.navbar.nav-product-page .language-selector {
+  color: #000000;
+}
+
+.navbar.nav-product-page .language-selector svg {
+  stroke: #000000;
+}
+
+.navbar.nav-product-page .logo {
+  color: #000000;
+}
+
+.navbar.nav-product-page .language-selector-simple .lang {
+  color: #000000;
+}
+
+.navbar.nav-product-page .language-selector-simple .lang.active {
+  color: #000000;
+}
+
+.navbar.nav-product-page .search-trigger svg {
+  stroke: #000000;
+}
+
+.navbar.nav-product-page .language-btn {
+  color: #000000;
+}
+
+.navbar.nav-product-page .language-btn svg {
+  stroke: #000000;
 }
 
 /* ================= SECCIONES (Left, Center, Right) ================= */
@@ -262,6 +307,19 @@
   color: white;
 }
 
+.logo-green {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--primary-green);
+}
+
+.logo-pag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .logo-svg {
   height: 40px;
   width: 40px;
@@ -345,30 +403,35 @@
 
 /* ================= MEGA MENU (Fondo Verde) ================= */
 .mega-menu-wrapper {
-  position: fixed;
+  position: absolute; /* Cambiado a fixed */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   background-color: var(--primary-green);
-  z-index: 1000; /* Detrás del Navbar (2000) */
-  padding-top: var(--nav-height); /* Espacio para el navbar */
+  z-index: 1900; /* Debajo del navbar */
+  padding-top: var(--nav-height);
   opacity: 0;
   visibility: hidden;
-  overflow-y: auto;
+  overflow-y: auto; /* Permite scroll si el contenido es muy largo */
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  transform: translateY(-100%); /* Inicialmente fuera de pantalla */
 }
 
 .mega-menu-wrapper.show {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0); /* Vuelve a su posición */
 }
 
+/* El contenedor interno debe permitir scroll */
 .container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px 50px;
   color: white;
+  height: calc(100vh - var(--nav-height)); /* Altura restante */
+  overflow-y: auto; /* Scroll interno si es necesario */
 }
 
 /* --- Títulos Principales (PRODUCTS, TECHNOLOGY) --- */
@@ -384,10 +447,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
-  color: #1e401e; /* Color oscuro para el título principal "PRODUCTS" si quieres contraste, o blanco */
-  /* En tu imagen 14c75c, "PRODUCTS" parece verde oscuro o negro con baja opacidad? 
-     Ajuste: En la imagen parece ser un texto oscuro sobre el verde. 
-     Vamos a ponerlo oscuro como en la referencia. */
+  color: #1e401e; 
   color: rgba(0, 0, 0, 0.4); 
 }
 
@@ -396,6 +456,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
   gap: 40px;
+  
 }
 
 /* Títulos de Columna (ROLLER CONE BITS, etc.) */
@@ -473,6 +534,7 @@
   
   .container { 
     padding: 20px; 
+    
   }
 }
 
@@ -545,23 +607,22 @@
 
 /* ================= OVERLAY BÚSQUEDA ================= */
 .search-overlay {
-  position: absolute; /* O fixed si quieres que persista al hacer scroll */
-  bottom: 0;
+  position: fixed; /* También cambiar a fixed */
+  top: 0; /* Cambiar de bottom: 0 a top: 0 */
   left: 0;
   width: 100%;
-  height: 90px; /* Misma altura que tu navbar */
-  background-color: #549e52; /* El verde de tu marca */
-  z-index: 2100; /* Debe ser el elemento más alto (encima del navbar y menú) */
-  
+  height: var(--nav-height);
+  background-color: #549e52;
+  z-index: 2100; /* Mayor que navbar y mega-menu */
   display: flex;
   align-items: center;
   justify-content: center;
-  
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease-in-out;
 }
+
 
 /* Clase para mostrarlo */
 .search-overlay.active {
@@ -734,4 +795,61 @@ svg {
       }
     }
   }
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.language-btn:hover {
+  opacity: 0.85;
+}
+
+
+
+.language-selector {
+  position: relative;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #0f2f1f;
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 140px;
+  z-index: 5000;
+}
+
+.language-dropdown button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.language-dropdown button:hover,
+.language-dropdown button.active {
+  background: #2ecc71;
+  color: #000;
+}
+
+.lang {
+  cursor: pointer;
+}
+
+.lang.active {
+  color: #2ecc71;
+  font-weight: 700;
 }

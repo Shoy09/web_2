@@ -1,0 +1,256 @@
+/* ================= CONFIGURACIÓN GENERAL ================= */
+:host {
+  --primary-green: #5da05c;
+  --text-dark: #0b1d0b;
+  --text-grey: #666;
+  --font-titles: 'sans-serif';
+  --font-body: sans-serif;
+}
+
+.display-1 {
+  font-size: 3.5rem;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.lead {
+  font-size: 0.9rem;
+}
+
+/* ================= HERO SECTION ================= */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://www.terelion.com/wp-content/uploads/2021/07/home-page-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+/* ================= INFO SECTION ================= */
+.info-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  text-align: center;
+
+  .intro-container {
+    max-width: 900px;
+    margin: 0 auto 100px;
+
+    .main-heading {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      letter-spacing: -1px;
+    }
+
+    .intro-body {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      text-align: center;
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
+
+    .contact-btn {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #4a7c59;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-bottom: 2px solid #4a7c59;
+      padding-bottom: 5px;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  /* ================= TRUST CONTAINER ================= */
+  .trust-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 0 auto;
+
+    &.grid-layout {
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+
+    &.section-lower {
+      padding-top: 100px; /* separa la segunda sección hacia abajo */
+    }
+
+    .section-upper {
+      flex: 1;
+      background-color: rgba(255, 255, 255, 0.15); /* cuadro transparente */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 490px;
+      margin: 0; /* elimina márgenes fijos */
+      line-height: 1.6;
+      backdrop-filter: blur(5px);
+      margin-left: 100px;
+    }
+
+    .section-lowesr{
+        flex: 1;
+      background-color: rgba(255, 255, 255, 0.15); /* cuadro transparente */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 498px;
+
+      margin: 0; /* elimina márgenes fijos */
+      line-height: 1.6;
+      backdrop-filter: blur(5px);
+      margin-right: 100px;
+    }
+
+    /* ===== TEXT CONTENT ===== */
+    .text-content {
+    
+      .sub-heading {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 25px;
+        letter-spacing: -1.5px; /* letras más pegadas */
+        transform: scaleY(1.2); /* letras un poco más altas */
+        text-align: center;
+      }
+
+      p {
+        font-size: 13.5px;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        text-align: justify;
+      }
+    }
+
+    /* ===== IMAGE CONTENT ===== */
+    .image-content1 {
+      flex: 1;
+
+      img {
+        width: 450px;
+        height: auto;
+        display: block;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .image-content2 {
+      flex: 1;
+
+      img {
+          margin-left: 140px; /* 🔹 mueve la imagen 100px a la derecha */
+
+        width: 450px;
+        height: auto;
+        display: block;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  /* 🔹 Mover el texto a la izquierda SOLO en la sección reverse */
+/* 🔹 mover el texto a la izquierda SOLO en la sección reverse */
+.trust-container.reverse .text-content.section-lowesr {
+  margin-left: -120px;   /* ajusta el valor si lo quieres más/menos a la izquierda */
+  margin-right: 130px;       /* evita conflictos */
+}
+}
+
+
+
+
+
+
+
+
+
+
+.bottom-banner {
+  position: relative;
+  overflow: hidden;
+  /* Ajustamos la altura para que se sienta como un banner de cierre */
+  min-height: 113vh; 
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente */
+  justify-content: center;
+  padding: 80px 0;
+}
+
+.bottom-banner .banner-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  /* Añadimos un filtro sutil si la imagen original es muy clara */
+  filter: brightness(0.8); 
+}
+
+.bottom-banner .overlay-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  width: 100%;
+}
+
+.banner-title {
+    color: rgb(15, 15, 15);
+  font-size: 2rem; /* Ajustado al estilo Terelion */
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.container-narrow p {
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.text-center {
+  background-color: #f0000000;
+  text-align: center;
+
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 12px;  
+  margin: 0 auto;          
+      max-width: 500px;
+
+}
+
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 1.8rem;
+  }
+  .bottom-banner {
+    min-height: 400px;
+  }
+}

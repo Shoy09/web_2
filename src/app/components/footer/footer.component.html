@@ -7,7 +7,7 @@
         <div class="footer-news__date">— 2022-02-25</div>
         <h5>
           <a href="https://www.terelion.com/es/terelion-is-an-exhibitor-at-minexchange-2022-sme-annual-conference-expo/">
-            TERELION IS AN EXHIBITOR AT MINEXCHANGE 2022 SME ANNUAL CONFERENCE & EXPO
+            {{ 'FOOTER.NEWS_1' | translate }}
           </a>
         </h5>
       </article>
@@ -16,7 +16,7 @@
         <div class="footer-news__date">— 2020-10-19</div>
         <h5>
           <a href="https://www.terelion.com/es/terelion-will-be-at-minexpo-2021/">
-            TERELION WILL BE AT MINEXPO 2021
+            {{ 'FOOTER.NEWS_2' | translate }}
           </a>
         </h5>
       </article>
@@ -25,7 +25,7 @@
         <div class="footer-news__date">— 2020-10-19</div>
         <h5>
           <a href="https://www.terelion.com/es/follow-us-on-social-media/">
-            FOLLOW TERELION ON SOCIAL MEDIA
+            {{ 'FOOTER.NEWS_3' | translate }}
           </a>
         </h5>
       </article>
@@ -40,19 +40,19 @@
       <div class="footer__left">
         <nav class="footer__menu">
           <div class="footer__menu-row">
-            <a href="/about-this-website/">Acerca de este sitio web</a>
+            <a href="/about-this-website/">{{ 'FOOTER.ABOUT_WEBSITE' | translate }}</a>
             <span class="separator">|</span>
-            <a href="/cookies/">Cookies</a>
+            <a href="/cookies/">{{ 'FOOTER.COOKIES' | translate }}</a>
             <span class="separator">|</span>
-            <a href="/legal-notice/">Aviso legal</a>
+            <a href="/legal-notice/">{{ 'FOOTER.LEGAL_NOTICE' | translate }}</a>
           </div>
           <div class="footer__menu-row footer__privacy-row">
-            <a href="/data-privacy/">Privacidad de datos</a>
+            <a href="/data-privacy/">{{ 'FOOTER.DATA_PRIVACY' | translate }}</a>
           </div>
         </nav>
 
         <div class="footer__copyright">
-          Copyright © {{ currentYear }} - Terelion, LLC
+          {{ 'FOOTER.COPYRIGHT' | translate: { year: currentYear } }}
         </div>
       </div>
 
@@ -65,12 +65,12 @@
       <div class="footer__right">
         <div class="footer__contact">
           <p>
-            Llámenos al
+            {{ 'FOOTER.CALL_US' }}
             <a href="tel:+14692944196">+1 469-294-4196</a>
           </p>
           <p>
-            Envíenos un correo electrónico a
-            <a href="mailto:info@terelion.com">infoterelion.com</a>
+            {{ 'FOOTER.EMAIL_US' }}
+            <a href="mailto:info@terelion.com">{{ 'FOOTER.EMAIL_ADDRESS' | translate }}</a>
           </p>
         </div>
 

@@ -1,0 +1,96 @@
+{
+  "NAV": {
+    "PRODUCTS": "Produtos",
+    "ABOUT": "Sobre",
+    "CONTACT": "Contato",
+    "SEARCH": "Pesquisar em terelion.com...",
+    "FOLLOWUS": "Siga-nos em"
+  },
+  "NAV_MENU": {
+    "PRODUCTS": "Produtos",
+    "ROLLERCONE": "Brocas de Cone de Rolos",
+    "RIDGEBACK": "RIDGEBACK™",
+    "AVENGER": "AVENGER™",
+    "DFORCE": "D-FORCE™",
+    "TARGET": "TARGET™",
+    "PILOTHOLE": "Alargadores de Poço Piloto",
+    "REVERSECIRCULATION": "Circulação Reversa",
+    "RPS": "RPS",
+    "RPS_GEN3": "RPS Gen3",
+    "RPS_GEN2": "RPS Gen2",
+    "RPS_BITS": "Brocas RPS",
+    "DOWNTHEHOLE": "Down The Hole",
+    "WARRIOR_HAMMERS": "Martelos Warrior",
+    "WARRIOR_BITS": "Brocas Warrior",
+    "TECHNOLOGY": "Tecnologia",
+    "ADVANCED_MODELING": "Modelagem Avançada",
+    "RCPRO": "RC-PRO",
+    "METALLURGY": "Metalurgia",
+    "FIELDSERVICE": "Serviço de Campo",
+    "SEALTEST": "Teste de Vedação",
+    "ABOUTUS": "Sobre Nós",
+    "OURHISTORY": "Nossa História"
+  },
+  "HOME": {
+    "TITLE1": "O QUE É PRECISO",
+    "TITLE2": "PARA QUEBRAR",
+    "TITLE3": "BARREIRAS",
+    "LEARN_MORE": "saiba mais",
+    "DISCOVER_HISTORY": "DESCUBRA A HISTÓRIA DA TERELION",
+    "OUR_HISTORY": "NOSSA HISTÓRIA",
+    "WELCOME_WARRIOR": "BEM-VINDO AO NOSSO NOVO MEMBRO — WARRIOR",
+    "EXPLORE_WARRIOR": "EXPLORAR WARRIOR",
+    "RIDGEBACK_TITLE": "RIDGEBACK™ Perfuração em rocha dura",
+    "EXPLORE_RIDGEBACK": "EXPLORAR RIDGEBACK™",
+    "AVENGER_TITLE": "AVENGER™ Perfuração de alto desempenho",
+    "EXPLORE_AVENGER": "EXPLORAR AVENGER™",
+    "ABOUT_TITLE": "Somos Terelion",
+    "ABOUT_P1": "Somos especialistas orgulhosos no desenvolvimento e fabricação de brocas de cone de rolos para as indústrias de mineração e construção. O Texas é nossa terra natal, mas a indústria global de mineração de superfície é nosso campo de atuação.",
+    "ABOUT_P2": "Na Terelion, sempre nos esforçamos para sermos os melhores no nosso negócio. Constantemente exploramos novos designs inovadores, novos materiais, novos métodos de fabricação e novas ferramentas de engenharia. Apenas para fornecer aos nossos clientes as brocas de cone de rolos mais duráveis, eficientes e econômicas disponíveis.",
+    "LEARN_MORE_ABOUT": "SAIBA MAIS SOBRE NÓS"
+  },
+  "PRODUCTS": {
+    "BREADCRUMB_1": "PRODUTOS",
+    "BREADCRUMB_2": "PRODUTOS DE PERFURAÇÃO",
+    "BREADCRUMB_3": "BROCAS DE CONE DE ROLOS",
+    "TITLE": "BROCAS DE CONE DE ROLOS",
+    "DESCRIPTION": "Brocas de cone de rolos para a indústria de mineração e construção. Visite nossas páginas para saber mais sobre nossas ferramentas de perfuração de alto desempenho, brocas de cone de rolos.",
+    "INFO_TEXT": "Com nossa ampla seleção de produtos de Brocas de Cone de Rolos; e com nossa experiência e conhecimento que mantemos há muito tempo, sempre estaremos lá para nossos clientes na indústria de mineração e construção. Veja nossos produtos e entre em contato para solicitar mais informações ou serviço.",
+    "CONTACT_US": "ENTRE EM CONTATO",
+    "VIEW": "VER"
+  },
+  "FOOTER": {
+    "ABOUT_WEBSITE": "Sobre este website",
+    "COOKIES": "Cookies",
+    "LEGAL_NOTICE": "Aviso legal",
+    "DATA_PRIVACY": "Privacidade de dados",
+    "COPYRIGHT": "Copyright © {{year}} - Terelion, LLC",
+    "CALL_US": "Ligue para nós",
+    "EMAIL_US": "Envie-nos um email",
+    "EMAIL_ADDRESS": "infoterelion.com"
+  },
+  "ABOUTUS": {
+    "TITLE": "Sobre nós",
+    "HEADING": "Sobre nós",
+    "PARAGRAPH_1": "Somos especialistas orgulhosos no desenvolvimento e fabricação de brocas de cone de rolos para as indústrias de mineração e construção. O Texas é nossa terra natal, mas a indústria global de mineração de superfície é nosso campo de atuação. Na Terelion, sempre nos esforçamos para sermos os melhores no nosso negócio. Constantemente exploramos novos designs inovadores, novos materiais, novos métodos de fabricação e novas ferramentas de engenharia. Apenas para fornecer aos nossos clientes as brocas de cone de rolos mais duráveis, eficientes e econômicas disponíveis.",
+    "HEADING_2": "Prepare-se para sua descoberta.",
+    "PARAGRAPH_2": "Onde quer que você olhe, o mundo está cheio de tarefas desafiadoras que a humanidade deve resolver. Na Terelion, nos especializamos naqueles desafios apresentados pela perfuração em poços de explosão na mineração de superfície. Sempre nos esforçamos para sermos os melhores no nosso negócio. Constantemente exploramos novos designs inovadores, novos materiais, novos métodos de fabricação e novas ferramentas de engenharia. Tudo com o objetivo de fabricar as brocas de cone de rolos mais duráveis, eficientes e econômicas disponíveis. Algumas de nossas inovações são pequenas. Outras levam a avanços que afetam toda a indústria. Fique atento e você estará entre os primeiros a saber quando a Terelion lançar a próxima inovação em perfuração de rochas."
+  },
+  "HISTORY": {
+    "TITLE": "NOSSA HISTÓRIA"
+  },
+  "VISTA_PRODUCTOS": {
+    "BREADCRUMB": "PRODUTOS / BROCAS DE CONE DE ROLOS /",
+    "TITLE": "RIDGEBACK™ – PERFURAÇÃO EM ROCHA DURA",
+    "DESCRIPTION_1": "Brocas rotativas para perfuração de explosão em rocha dura. Cauda especialmente projetada para auxiliar na evacuação rápida de resíduos. Os rolamentos abertos de carga elevada, a estrutura de corte robusta e o tratamento de carboneto HET proporcionam altas taxas de penetração e longa vida útil. Os cones ventilados (diâmetro de 9\" e acima) proporcionam limpeza adicional dos rolamentos e redução de calor.",
+    "DESCRIPTION_2": "Os produtos RIDGEBACK™ contêm rolamentos de maior vida útil, proteção de medida adicional e elementos de estrutura de corte melhorados para uso em aplicações de alta tensão.",
+    "CONTACT_MORE": "ENTRE EM CONTATO PARA OBTER MAIS INFORMAÇÕES",
+    "FEATURES_TITLE": "CARACTERÍSTICAS E BENEFÍCIOS",
+    "NAIL_NOZZLE": "RETENÇÃO DO BOCAL DE PREGO",
+    "NAIL_NOZZLE_DESC": "Mesmo nas condições mais abrasivas, a perda de bocais é eliminada.",
+    "RIDGEBACK_FEATURE": "RIDGEBACK™",
+    "RIDGEBACK_DESC": "Este recurso de cauda patenteado permite que os resíduos sejam removidos do poço de forma eficaz. Isso significa menos remoagem.",
+    "REINFORCED_SHIRTTAIL": "CAUDA REFORÇADA",
+    "REINFORCED_DESC": "Um padrão de insertos de carboneto de tungstênio e metal soldado endurecido resiste ao desgaste e protege o rolamento."
+  }
+}
