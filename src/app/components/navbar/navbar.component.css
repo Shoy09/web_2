@@ -135,7 +135,7 @@
 
 /* ================= NAVBAR CONTAINER ================= */
 .navbar {
-  position: fixed; /* Cambiado a fixed */
+  position: absolute; /* Cambiado a fixed */
   top: 0;
   left: 0;
   width: 100%;
@@ -456,6 +456,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
   gap: 40px;
+  
   
 }
 
