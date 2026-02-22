@@ -13,7 +13,7 @@ export interface NavbarSocial {
   nombre: string;
   icon: string;
   url: string;
-}
+} 
 
 export interface NavbarData {
   productosLabel: string;

@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
   isProductPage = false;
   isContactPage = false;
   isAboutPage = false;
+  isNoticiasPage = false;
 
   // ===============================
   // RESPONSIVE
@@ -50,7 +51,7 @@ export class NavbarComponent implements OnInit {
   ];
   currentLang = 'en';
   langDropdownOpen = false;
-
+ 
   constructor(
     private router: Router,
     private translate: TranslateService,
@@ -80,6 +81,7 @@ export class NavbarComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.checkProductPage();
+        
       });
   }
 
@@ -107,6 +109,7 @@ export class NavbarComponent implements OnInit {
     this.isProductPage = url.includes('/producto') || url.includes('/productos');
     this.isContactPage = url.includes('/contactos');
     this.isAboutPage = url.includes('/acerca-de');
+    this.isNoticiasPage = url.toLowerCase().includes('/noticias');
   }
 
   // ===============================

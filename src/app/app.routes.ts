@@ -17,6 +17,8 @@ import { ProductGeneralEditorComponents } from './admin/editors/product-general-
 import { MasInfoEditorComponent } from './admin/editors/mas-info-editor/mas-info-editor.component';
 import { MasInfoComponent } from './components/mas-info/mas-info.component';
 import { HistoryEditorComponent } from './admin/editors/history-editor/history-editor.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
+import { NoticiasEditorComponent } from './admin/editors/noticias-editor/noticias-editor.component';
 
 
 export const routes: Routes = [
@@ -27,6 +29,7 @@ export const routes: Routes = [
   { path: 'productos', component: VistaProductosComponent },
   { path: 'productos/general', component: ProductoGeneralComponent },
   { path: 'mas-info', component: MasInfoComponent },
+  { path: 'Noticias', component: NoticiasComponent },
   { path: 'contactos', component: ContactComponent },
 
 
@@ -43,6 +46,7 @@ export const routes: Routes = [
       { path: 'products', component: ProductsEditorComponent },
       { path: 'mas-info', component: MasInfoEditorComponent },
       { path: 'history', component: HistoryEditorComponent },
+      { path: 'noticias', component: NoticiasEditorComponent },
 
     ]
   }, 

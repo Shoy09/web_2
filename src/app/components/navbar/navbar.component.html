@@ -1,5 +1,5 @@
 <!-- SECCIÓN NAVBAR PRINCIPAL -->
-<nav class="navbar" [class.nav-active]="showProductos || showAbout || menuOpen" [class.nav-product-page]="isProductPage" [class.nav-contact-page]="isContactPage" [class.nav-about-page]="isAboutPage">
+<nav class="navbar" [class.nav-active]="showProductos || showAbout || menuOpen" [class.nav-product-page]="isProductPage" [class.nav-contact-page]="isContactPage" [class.nav-about-page]="isAboutPage" [class.nav-Noticias-page]="isNoticiasPage">
   
   <div class="nav-left">
     <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="menuOpen" aria-label="Menu">
@@ -96,6 +96,7 @@
       <div class="logo-pag">
         <a routerLink="/home">
           <img src="/logo-negro.png" class="logo" alt="Terelion logo" />
+          
         </a>
       </div>
     </div>

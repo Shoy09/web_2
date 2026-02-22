@@ -1,0 +1,62 @@
+<div class="editor-container">
+  <h2>Editor de Comunicado</h2>
+
+  <div class="tabs-nav">
+    <button [class.active]="tabActiva === 'header'" (click)="setTab('header')">Encabezado</button>
+    <button [class.active]="tabActiva === 'content'" (click)="setTab('content')">Cuerpo</button>
+    <button [class.active]="tabActiva === 'footer'" (click)="setTab('footer')">Firma y Contacto</button>
+  </div>
+
+  <div class="tab-content">
+    
+    <div *ngIf="tabActiva === 'header'" class="fade-in">
+      <div class="form-group">
+        <label>Categoría</label>
+        <input type="text" [(ngModel)]="noticia.categoria">
+      </div>
+      <div class="form-group">
+        <label>Título Principal</label>
+        <textarea [(ngModel)]="noticia.titulo" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Fecha de Publicación</label>
+        <input type="text" [(ngModel)]="noticia.fechaPublicacion">
+      </div>
+    </div>
+
+    <div *ngIf="tabActiva === 'content'" class="fade-in">
+      <label>Párrafos del Comunicado</label>
+      <div *ngFor="let p of noticia.parrafos; let i = index; trackBy: trackByFn" class="paragraph-row">
+        <textarea [(ngModel)]="noticia.parrafos[i]" rows="3"></textarea>
+        <button class="btn-delete" (click)="eliminarParrafo(i)">×</button>
+      </div>
+      <button class="btn-add" (click)="agregarParrafo()">+ Nuevo Párrafo</button>
+    </div>
+
+    <div *ngIf="tabActiva === 'footer'" class="fade-in">
+      <div class="grid-row">
+        <div class="form-group">
+          <label>Nombre de Firma</label>
+          <input type="text" [(ngModel)]="noticia.firmaNombre">
+        </div>
+        <div class="form-group">
+          <label>Cargo / Título</label>
+          <input type="text" [(ngModel)]="noticia.firmaCargo">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email de Contacto</label>
+        <input type="email" [(ngModel)]="noticia.contactoEmail">
+      </div>
+      <div class="form-group">
+        <label>Nombre de Contacto (Opcional)</label>
+        <input type="text" [(ngModel)]="noticia.contactoNombre">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <button class="btn-save" (click)="guardarCambios()">Guardar Cambios</button>
+  </div>
+</div>

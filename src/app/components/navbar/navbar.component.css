@@ -6,6 +6,8 @@
   --border-line: rgba(255, 255, 255, 0.25);
   --nav-height: 90px;
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --text-black: #000000;
+
 }
  
 /* ================= NAVBAR PRINCIPAL ================= */
@@ -408,9 +410,21 @@ a{
 
 /* ================= ESTADOS DE COLOR POR PÁGINA ================= */
 /* Página de producto y contacto - texto negro */
+
+
+
 .navbar.nav-product-page .nav-links a,
 .navbar.nav-contact-page .nav-links a {
-  color: #ffffff;
+  color: #000000;
+}
+
+@media (max-width: 700px){
+.navbar.nav-contact-page .nav-links a {
+  color: var(--text-white);
+}
+.navbar.nav-product-page .nav-links a {
+  color: var(--text-white);
+}
 }
 
 .navbar.nav-product-page .hamburger-btn svg rect,
@@ -453,6 +467,12 @@ a{
   color: var(--text-white);
 }
 
+@media (max-width: 700px){
+.navbar.nav-About-page .nav-links a {
+  color: var(--text-white);
+}
+}
+
 .navbar.nav-about-page .hamburger-btn svg rect {
   fill: white;
 }
@@ -476,6 +496,45 @@ a{
 .navbar.nav-about-page .search-input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
+  /* --text-black: #000000; */
+
+
+/* Página noticias - texto negro */
+.navbar.nav-Noticias-page .nav-links a {
+  color: var(--text-black);
+}
+
+@media (max-width: 700px){
+.navbar.nav-Noticias-page .nav-links a {
+  color: var(--text-white);
+}
+}
+
+.navbar.nav-Noticias-page .hamburger-btn svg rect {
+  fill: rgb(0, 0, 0);
+}
+
+.navbar.nav-Noticias-page .search-trigger svg {
+  stroke: rgb(0, 0, 0);
+}
+
+.navbar.nav-Noticias-page .language-btn {
+  color: rgb(0, 0, 0);
+}
+
+.navbar.nav-Noticias-page .language-btn svg {
+  stroke: rgb(0, 0, 0);
+}
+
+.navbar.nav-Noticias-page .search-input {
+  color: rgb(0, 0, 0);
+}
+
+.navbar.nav-Noticias-page .search-input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
 
 /* Mega menú activo - todo blanco */
 .navbar.nav-active .nav-links > li > a {
@@ -497,6 +556,9 @@ a{
 .navbar.nav-active .language-btn svg {
   stroke: white;
 }
+
+
+
 
 /* ================= SECCIÓN MÓVIL ================= */
 .respons {
@@ -753,16 +815,12 @@ a{
 }
 
 /* Ajustes para pantallas muy pequeñas */
-@media (max-width: 480px) {
+@media (max-width: 780px) {
   .logo {
-    width: 160px;
-    margin-bottom: -20px;
+
     display: none;
   }
   
-  .logo-pag {
-    margin-top: 20px;
-  }
   
   .nav-right {
     gap: 10px;

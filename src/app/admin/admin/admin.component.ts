@@ -20,6 +20,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
         <a routerLink="contact" routerLinkActive="active">Contacto</a>
         <a routerLink="mas-info" routerLinkActive="active">Mas Información</a>
         <a routerLink="history" routerLinkActive="active">Nuestra Historia</a>
+        <a routerLink="noticias" routerLinkActive="active">Noticias</a>
 
         
       </nav> 
