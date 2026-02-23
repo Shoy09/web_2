@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HomeData } from '../models/home.model';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class HomeService {
@@ -14,7 +14,16 @@ export class HomeService {
 
   getHome(): Observable<HomeData> {
     return this.http.get<HomeData>(this.api).pipe(
-      tap(data => this.homeData$.next(data))
+      tap(data => this.homeData$.next(data)),
+      catchError(() => {
+        const fallback: HomeData = {
+          hero: { titleLines: [''], buttonText: '', buttonLink: '' },
+          cards: [],
+          about: { title: '', paragraphs: [], linkText: '', linkUrl: '' }
+        };
+        this.homeData$.next(fallback);
+        return of(fallback);
+      })
     );
   }
 
