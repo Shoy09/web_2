@@ -9,22 +9,22 @@ export class NavbarService {
   private api = 'https://backend-web-azure.vercel.app/api/navbar';
 
   private navbarData: NavbarData = {
-    productosLabel: '',
-    aboutLabel: '',
-    contactoLabel: '',
-    contactoRuta: '',
-    siguenos: '',
-    buscarPlaceholder: '',
+    productosLabel: 'Productos',
+    aboutLabel: 'Acerca de',
+    contactoLabel: 'Contacto',
+    contactoRuta: '/contactos',
+    siguenos: 'Síguenos en',
+    buscarPlaceholder: 'Buscar en terelion.com...',
     aboutMenu: [
-      { nombre: '', ruta: '' },
-      { nombre: '', ruta: '' }
+      { nombre: 'Nosotros', ruta: '/acerca-de' },
+      { nombre: 'Nuestra Historia', ruta: '/his' }
     ],
     productosMenu: [
       {
-        titulo: '', ruta: '',
+        titulo: 'Brocas Tricónicas', ruta: '/productos/general',
         items: [
-          { nombre: '', ruta: '' },
-          { nombre: '', ruta: '' }
+          { nombre: 'RIDGEBACK™ – Perforación en roca dura', ruta: '/productos' },
+          { nombre: 'AVENGER™ – Perforación de alto rendimiento', ruta: '/productos' }
         ]
       }
     ],
@@ -32,7 +32,7 @@ export class NavbarService {
       { nombre: 'facebook', icon: 'bi bi-facebook', url: 'https://www.facebook.com/share/1BzmQ64ZW3/' },
       { nombre: 'linkedin', icon: 'bi bi-linkedin', url: 'https://www.linkedin.com/company/jf-tricon-per%C3%BA/' }
     ],
-    logoActual: ''
+    logoActual: '/logo-blanco.png'
   };
 
   private navbarSubject = new BehaviorSubject<NavbarData>(this.getNavbar());

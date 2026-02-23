@@ -52,18 +52,18 @@ export class GeneralProductService {
   private getDefaultData(): GeneralProductData {
     return {
       headerData: {
-        titulo: '',
-        descripcion: '',
-        breadcrumbs: []
+        titulo: 'BROCAS TRICÓNICAS',
+        descripcion: 'Soluciones diseñadas para rendimiento y durabilidad.',
+        breadcrumbs: ['PRODUCTOS', 'BROCAS']
       },
       infoSection: {
-        texto: '',
-        boton: { 
-          label: '', 
-          link: '' 
-        }
+        texto: 'Conoce nuestra gama de productos y encuentra el ideal para tu operación.',
+        boton: { label: 'CONTÁCTANOS', link: '/contactos' }
       },
-      products: []
+      products: [
+        { title: 'Producto 1', image: 'assets/products/bit1.png', link: '#' },
+        { title: 'Producto 2', image: 'assets/products/bit2.png', link: '#' }
+      ]
     };
   }
 }

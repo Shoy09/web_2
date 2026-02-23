@@ -10,18 +10,18 @@ export class FooterService {
 
   private footerData: FooterData = {
     menuIzquierda: [ 
-      { label: '', ruta: '' },
-      { label: '', ruta: '' },
-      { label: '', ruta: '' },
-      { label: '', ruta: '' }
+      { label: 'Acerca de este sitio web', ruta: '/about-this-website/' },
+      { label: 'Cookies', ruta: '/cookies/' },
+      { label: 'Aviso legal', ruta: '/legal-notice/' },
+      { label: 'Privacidad de datos', ruta: '/data-privacy/' }
     ],
     noticias: [
-      { fecha: '', titulo: '', url: '' },
-      { fecha: '', titulo: '', url: '' },
-      { fecha: '', titulo: '', url: '' }
+      { fecha: '2022-02-25', titulo: 'Terelion es expositor en Minexchange 2022 SME Annual Conference & Expo', url: '#' },
+      { fecha: '2020-10-19', titulo: 'Terelion estará en MINExpo 2021', url: '#' },
+      { fecha: '2020-10-19', titulo: 'Síguenos en nuestras redes sociales', url: '#' }
     ],
-    logoCentro: '',
-    contacto: { telefono: '', email: '' },
+    logoCentro: '/logo-blanco.png',
+    contacto: { telefono: '+14692944196', email: 'frank.rupay@jftriconperu.com' },
     redes: [
       { icon: 'bi bi-facebook', url: 'https://www.facebook.com/share/1BzmQ64ZW3/', nombre: 'Facebook' },
       { icon: 'bi bi-linkedin', url: 'https://www.linkedin.com/company/jf-tricon-perú', nombre: 'LinkedIn' },

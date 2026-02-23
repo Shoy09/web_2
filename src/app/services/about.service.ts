@@ -58,10 +58,15 @@ export class AboutService {
 
   private getDefaultData(): AboutSection {
     return {
-      heroTitle: '',
-      subtitle: '',
-      paragraphs: ['',''],
-      paragraphs2: ['','',''      ]
+      heroTitle: 'SOBRE NOSOTROS',
+      subtitle: 'Nuestra misión, valores y equipo',
+      paragraphs: ['Somos orgullosos especialistas en el desarrollo y fabricación de brocas de cono de rodillos para las industrias de minería y construcción. Texas es nuestra patria, pero la industria minera a cielo abierto mundial es nuestro patio de recreo.',
+        'En Terelion siempre nos hemos dedicado a ser los mejores en nuestro negocio. Exploramos constantemente nuevos diseños innovadores, nuevos materiales, nuevos métodos de fabricación y nuevas herramientas de ingeniería. Sólo para suministrar a nuestros clientes las brocas de cono de rodillos más resistentes, eficientes y rentables disponibles.'
+      ],
+      paragraphs2: ['Dondequiera que mires, el mundo está lleno de tareas desafiantes que la humanidad debe resolver. En Terelion nos especializamos en aquellos desafíos que plantea la perforación con voladuras en la minería a cielo abierto.',
+        'Siempre nos hemos dedicado a ser los mejores en nuestro negocio. Exploramos constantemente nuevos diseños innovadores, nuevos materiales, nuevos métodos de fabricación y nuevas herramientas de ingeniería. Todo con el objetivo de fabricar las brocas de cono de rodillos más resistentes, eficientes y rentables disponibles.',
+        'Algunas de nuestras innovaciones son menores. Otros conducen a avances que afectan a toda la industria. Estén atentos y estarán entre los primeros en saber cuándo Terelion lanzará la próxima innovación en perforación de rocas.'
+      ]
     };
   }
 }

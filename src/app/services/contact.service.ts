@@ -13,16 +13,16 @@ export class ContactService {
   // =============================
   private defaultRegions: Region[] = [
     {
-      value: '',
-      label: '',
+      value: 'south-america',
+      label: 'Sudamérica',
       contact: {
-        name: '',
-        phones: ['', ''],
-        email: '',
+        name: 'Miguel Jahncke',
+        phones: ['+51 989 164 305 (Perú)', '+1 954 258 0271 (EE.UU.)'],
+        email: 'mjahncke@terelion.com',
         office: {
-          country: '',
-          address: '',
-          phone: ''
+          country: 'Perú',
+          address: 'Terelion LLC. Sucursal del Perú, Las Poncianas #105, La Molina Vieja, Lima, Perú',
+          phone: '+51-1-365-2529'
         }
       }
     }
@@ -30,18 +30,18 @@ export class ContactService {
 
   private defaultContent: ContactPageContent = {
     header: {
-      subtitle: '',
-      title: '',
-      selectHelp: '',
-      regionLabel: '',
-      regionPlaceholder: ''
+      subtitle: 'CONTÁCTANOS',
+      title: 'SELECCIONA TU REGIÓN',
+      selectHelp: 'Comienza a escribir para buscar tu región',
+      regionLabel: 'País o Región',
+      regionPlaceholder: 'Escribe para buscar...'
     },
     body: {
       leftTexts: [
-        '',
-        ''
+        'Dondequiera que esté ubicada tu operación...',
+        'Usa el menú desplegable para encontrar la oficina...'
       ],
-      boldText: '',
+      boldText: '¡Encuentra a tus contactos en tu región!',
       formFields: [
         { label: 'Nombre', placeholder: 'Ingresa tu nombre', required: true },
         { label: 'Apellido', placeholder: 'Ingresa tu apellido', required: true },

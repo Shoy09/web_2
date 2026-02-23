@@ -26,14 +26,14 @@ export class HistoryService {
       },
       error: () => {
         const data: HistoryData = {
-          heroTitle: '',
+          heroTitle: 'NUESTRA HISTORIA',
           timeline: [
             {
-              image: '',
-              alt: '',
+              image: 'prueba.jpg',
+              alt: 'Varel logo',
               stories: [
-                { year: '', text: '' },
-                { year: '', text: '' }
+                { year: '1947', text: 'Fundación en Delaware' },
+                { year: '1950', text: 'Producción inicial' }
               ]
             }
           ]

@@ -9,17 +9,17 @@ export class NoticiasService {
 
   private noticiaInicial: Noticia = {
     id: 1,
-    categoria: '',
-    titulo: '',
-    fechaPublicacion: '',
+    categoria: 'NEWS /',
+    titulo: 'TERELION WILL DISCONTINUE ITS OPERATIONS...',
+    fechaPublicacion: '2024-06-14',
     parrafos: [
-      '',
-      ''
+      'Terelion will discontinue its operations...',
+      'We appreciate the support...'
     ],
-    contactoNombre: '',
-    contactoEmail: '',
-    firmaNombre: '',
-    firmaCargo: ''
+    contactoNombre: 'Miguel Jahncke',
+    contactoEmail: 'mjahncke@terelion.com',
+    firmaNombre: 'Tommy Persson',
+    firmaCargo: 'President, Terelion'
   };
 
   private noticiaSubject: BehaviorSubject<Noticia>;
