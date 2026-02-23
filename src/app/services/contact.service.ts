@@ -5,7 +5,7 @@ import { Region, ContactPageContent } from '../models/contact.model';
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-
+ 
   private api = '/api/contact-page';
 
   // =============================
