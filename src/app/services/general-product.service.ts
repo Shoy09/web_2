@@ -5,7 +5,7 @@ import { GeneralProductData } from '../models/general-product';
 
 @Injectable({ providedIn: 'root' })
 export class GeneralProductService {
-  private api = 'http://localhost:3000/api/general-product-page';
+  private api = 'https://backend-web-omega.vercel.app/api/general-product-page';
 
   private _data: GeneralProductData = this.getDefaultData();
   public data$ = new BehaviorSubject<GeneralProductData>(this._data);

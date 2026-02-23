@@ -6,7 +6,7 @@ import { FooterData } from '../models/footer.model';
 @Injectable({ providedIn: 'root' })
 export class FooterService {
 
-  private api = 'http://localhost:3000/api/footer';
+  private api = 'https://backend-web-omega.vercel.app/api/footer';
 
   private footerData: FooterData = {
     menuIzquierda: [ 

@@ -6,7 +6,7 @@ import { HistoryData } from '../models/history.model';
 @Injectable({ providedIn: 'root' })
 export class HistoryService {
 
-  private api = 'http://localhost:3000/api/history';
+  private api = 'https://backend-web-omega.vercel.app/api/history';
 
   private dataSubject = new BehaviorSubject<HistoryData | null>(null);
   data$ = this.dataSubject.asObservable();

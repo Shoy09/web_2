@@ -6,7 +6,7 @@ import { NavbarData } from '../models/navbar.model';
 @Injectable({ providedIn: 'root' })
 export class NavbarService {
 
-  private api = 'http://localhost:3000/api/navbar';
+  private api = 'https://backend-web-omega.vercel.app/api/navbar';
 
   private navbarData: NavbarData = {
     productosLabel: '',
