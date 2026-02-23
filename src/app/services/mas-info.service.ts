@@ -5,7 +5,7 @@ import { MasInfoData } from '../models/masinfo.model';
 
 @Injectable({ providedIn: 'root' })
 export class MasInfoService {
-  private api = 'https://backend-web-omega.vercel.app/api/mas-info';
+  private api = 'https://backend-web-azure.vercel.app/api/mas-info';
   private _data: MasInfoData = this.getDefaultData();
   public data$ = new BehaviorSubject<MasInfoData>(this._data);
 

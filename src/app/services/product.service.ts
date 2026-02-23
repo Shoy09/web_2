@@ -8,7 +8,7 @@ import { HeroProduct } from '../models/product.model';
 })
 export class ProductService {
 
-  private api = 'https://backend-web-omega.vercel.app/api/products';
+  private api = 'https://backend-web-azure.vercel.app/api/products';
 
   private defaultProduct: HeroProduct = {
     breadcrumbs: [
