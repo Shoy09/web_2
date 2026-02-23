@@ -3,7 +3,7 @@
 
   <mat-tab-group animationDuration="300ms" [dynamicHeight]="true">
 
-    <!-- TAB: Principal -->
+    <!-- TAB: Principal --> 
     <mat-tab label="Principal">
       <label>Título</label>
       <input [(ngModel)]="product.title" matInput>
@@ -52,6 +52,8 @@
         <input placeholder="Título" [(ngModel)]="product.downloads![i].title" matInput>
         <input placeholder="Descripción" [(ngModel)]="product.downloads![i].description" matInput>
         <input placeholder="Link" [(ngModel)]="product.downloads![i].link" matInput>
+        <input type="file" accept=".pdf,application/pdf" (change)="onPdfSelected($event, i)" />
+        <a *ngIf="getDownloadLink(product.downloads![i])" [href]="getDownloadLink(product.downloads![i])" target="_blank">Ver PDF</a>
         <button mat-button color="warn" (click)="removeDownload(i)">❌</button>
       </div>
       <button mat-button (click)="addDownload()">+ Agregar descargable</button>
@@ -65,7 +67,7 @@
         <span>↺</span>
         Cancelar
       </button>
-      <button type="submit" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" (click)="save()">
         <span>💾</span>
         Guardar cambios
       </button>
@@ -74,5 +76,5 @@
 </div>
   <div class="notification" *ngIf="showSuccessMessage">
     <span>✅</span>
-    <span>Navbar actualizado correctamente</span>
+    <span>Producto actualizado correctamente</span>
   </div>

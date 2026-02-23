@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Importante para el [(ngModel)]
 import { NoticiasService } from '../../services/noticias.service';
 import { Noticia } from '../../models/noticias.model';
-
+ 
 @Component({
   selector: 'app-noticias',
   standalone: true,

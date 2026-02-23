@@ -1,11 +1,8 @@
 <!-- OVERLAY GLOBAL -->
-<div
-  class="language-overlay"
-  *ngIf="dropdownOpen"
-  (click)="closeDropdown()"
-></div>
- 
-<section class="hero">
+<div class="language-overlay" *ngIf="dropdownOpen" (click)="closeDropdown()"></div>
+
+<!-- HERO -->
+<section class="hero" *ngIf="hero">
   <div class="content">
     <h1>
       <span *ngFor="let line of hero.titleLines">{{ line }}</span>
@@ -44,7 +41,7 @@
 </section>
 
 <!-- ABOUT SECTION -->
-<section class="about-section">
+<section class="about-section" *ngIf="about">
   <div class="about-container">
     <h2>{{ about.title }}</h2>
     <p *ngFor="let paragraph of about.paragraphs">

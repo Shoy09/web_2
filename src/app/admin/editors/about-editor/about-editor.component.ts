@@ -74,8 +74,12 @@ export class AboutEditorComponent implements OnInit, OnDestroy {
 
   private loadData(): void {
     const data = this.aboutService.getAbout();
-    console.log('Cargando datos iniciales:', data);
     this.updateFormWithData(data);
+    this.subscription.add(
+      this.aboutService.aboutData$.subscribe(d => {
+        if (d) this.updateFormWithData(d);
+      })
+    );
   }
 
   private updateFormWithData(data: AboutSection): void {

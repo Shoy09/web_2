@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { FooterData } from '../models/footer.model';
 
 @Injectable({ providedIn: 'root' })
 export class FooterService {
 
+  private api = 'http://localhost:3000/api/footer';
+
   private footerData: FooterData = {
     menuIzquierda: [ 
-      { label: 'Acerca de este sitio web', ruta: '/about-this-website/' },
-      { label: 'Cookies', ruta: '/cookies/' },
-      { label: 'Aviso legal', ruta: '/legal-notice/' },
-      { label: 'Privacidad de datos', ruta: '/data-privacy/' }
+      { label: '', ruta: '' },
+      { label: '', ruta: '' },
+      { label: '', ruta: '' },
+      { label: '', ruta: '' }
     ],
     noticias: [
-      { fecha: '2022-02-25', titulo: 'Terelion es expositor en Minexchange 2022 SME Annual Conference & Expo', url: '#' },
-      { fecha: '2020-10-19', titulo: 'Terelion estará en MINExpo 2021', url: '#' },
-      { fecha: '2020-10-19', titulo: 'Síguenos en nuestras redes sociales', url: '#' }
+      { fecha: '', titulo: '', url: '' },
+      { fecha: '', titulo: '', url: '' },
+      { fecha: '', titulo: '', url: '' }
     ],
-    logoCentro: '/logo-blanco.png',
-    contacto: { telefono: '+14692944196', email: 'frank.rupay@jftriconperu.com' },
+    logoCentro: '',
+    contacto: { telefono: '', email: '' },
     redes: [
       { icon: 'bi bi-facebook', url: 'https://www.facebook.com/share/1BzmQ64ZW3/', nombre: 'Facebook' },
       { icon: 'bi bi-linkedin', url: 'https://www.linkedin.com/company/jf-tricon-perú', nombre: 'LinkedIn' },
@@ -32,14 +35,38 @@ export class FooterService {
  
   public footerData$ = new BehaviorSubject<FooterData>(this.getFooter());
 
+  constructor(private http: HttpClient) {
+    this.load();
+  }
+
   getFooter(): FooterData {
-    const saved = localStorage.getItem('footerData');
-    return saved ? JSON.parse(saved) : this.footerData;
+    return this.footerData;
   }
 
   updateFooter(data: FooterData) {
-    this.footerData = data;
-    localStorage.setItem('footerData', JSON.stringify(data));
-    this.footerData$.next(this.getFooter());
+    this.http.put<any>(this.api, { content: data }).subscribe({
+      next: (resp) => {
+        const mapped: FooterData = resp.content ?? data;
+        this.footerData = mapped;
+        this.footerData$.next(mapped);
+      },
+      error: () => {
+        this.footerData = data;
+        this.footerData$.next(data);
+      }
+    });
+  }
+
+  load() {
+    this.http.get<any>(this.api).subscribe({
+      next: (resp) => {
+        const mapped: FooterData = resp.content ?? resp;
+        this.footerData = mapped;
+        this.footerData$.next(mapped);
+      },
+      error: () => {
+        this.footerData$.next(this.footerData);
+      }
+    });
   }
 }

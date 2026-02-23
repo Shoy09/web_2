@@ -11,7 +11,7 @@
       <div class="info-product">
       <h1 class="product-title">
         {{ heroProduct.title }} –
-        <br>
+        <br> 
         
         <span>{{ heroProduct.subtitle }}</span>
       </h1>
@@ -61,12 +61,12 @@
 
       <div class="downloads-content">
         <h2>DESCARGABLES</h2>
-        <div class="download-card">
-          <h3>{{ downloads[0].title }}</h3>
-          <div class="download-item">
-            <span>{{ downloads[0].description }}</span>
+        <div class="card-descarga">
+          <h3>Catalogo</h3>
+          <a class="download-card" *ngFor="let d of downloads" [href]="getHref(d)" target="_blank" rel="noopener">
+            {{ d.title }}
             <span class="icon-download">&#8595;</span>
-          </div>
+          </a>
         </div>
       </div>
 

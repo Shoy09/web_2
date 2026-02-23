@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { NavbarData } from '../models/navbar.model';
 
 @Injectable({ providedIn: 'root' })
 export class NavbarService {
 
+  private api = 'http://localhost:3000/api/navbar';
+
   private navbarData: NavbarData = {
-    productosLabel: 'Productos',
-    aboutLabel: 'Acerca de',
-    contactoLabel: 'Contacto',
-    contactoRuta: '/contactos',
-    siguenos: 'Síguenos en',
-    buscarPlaceholder: 'Buscar en terelion.com...',
+    productosLabel: '',
+    aboutLabel: '',
+    contactoLabel: '',
+    contactoRuta: '',
+    siguenos: '',
+    buscarPlaceholder: '',
     aboutMenu: [
-      { nombre: 'Nosotros', ruta: '/acerca-de' },
-      { nombre: 'Nuestra Historia', ruta: '/his' }
+      { nombre: '', ruta: '' },
+      { nombre: '', ruta: '' }
     ],
     productosMenu: [
       {
-        titulo: 'Brocas Tricónicas', ruta: '/productos/general',
+        titulo: '', ruta: '',
         items: [
-          { nombre: 'RIDGEBACK™ – Perforación en roca dura', ruta: '/productos' },
-          { nombre: 'AVENGER™ – Perforación de alto rendimiento', ruta: '/productos' }
+          { nombre: '', ruta: '' },
+          { nombre: '', ruta: '' }
         ]
       }
     ],
@@ -29,20 +32,66 @@ export class NavbarService {
       { nombre: 'facebook', icon: 'bi bi-facebook', url: 'https://www.facebook.com/share/1BzmQ64ZW3/' },
       { nombre: 'linkedin', icon: 'bi bi-linkedin', url: 'https://www.linkedin.com/company/jf-tricon-per%C3%BA/' }
     ],
-    logoActual: '/logo-blanco.png'
+    logoActual: ''
   };
 
   private navbarSubject = new BehaviorSubject<NavbarData>(this.getNavbar());
   public navbarData$ = this.navbarSubject.asObservable();
 
+  constructor(private http: HttpClient) {
+    this.load();
+  }
+
   getNavbar(): NavbarData {
-    const saved = localStorage.getItem('navbarData');
-    return saved ? JSON.parse(saved) : this.navbarData;
+    return this.navbarData;
   }
 
   updateNavbar(data: NavbarData) {
-    this.navbarData = data;
-    localStorage.setItem('navbarData', JSON.stringify(data));
-    this.navbarSubject.next(data);
+    this.http.put<any>(this.api, data).subscribe({
+      next: (resp) => {
+        const mapped: NavbarData = {
+          productosLabel: resp.productosLabel ?? data.productosLabel,
+          aboutLabel: resp.aboutLabel ?? data.aboutLabel,
+          contactoLabel: resp.contactoLabel ?? data.contactoLabel,
+          contactoRuta: resp.contactoRuta ?? data.contactoRuta,
+          siguenos: resp.siguenos ?? data.siguenos,
+          buscarPlaceholder: resp.buscarPlaceholder ?? data.buscarPlaceholder,
+          aboutMenu: resp.aboutMenu ?? data.aboutMenu,
+          productosMenu: resp.productosMenu ?? data.productosMenu,
+          redes: resp.redes ?? data.redes,
+          logoActual: resp.logoActual ?? data.logoActual
+        };
+        this.navbarData = mapped;
+        this.navbarSubject.next(mapped);
+      },
+      error: () => {
+        this.navbarData = data;
+        this.navbarSubject.next(data);
+      }
+    });
+  }
+
+  load() {
+    this.http.get<any>(this.api).subscribe({
+      next: (resp) => {
+        const mapped: NavbarData = {
+          productosLabel: resp.productosLabel,
+          aboutLabel: resp.aboutLabel,
+          contactoLabel: resp.contactoLabel,
+          contactoRuta: resp.contactoRuta,
+          siguenos: resp.siguenos,
+          buscarPlaceholder: resp.buscarPlaceholder,
+          aboutMenu: resp.aboutMenu,
+          productosMenu: resp.productosMenu,
+          redes: resp.redes,
+          logoActual: resp.logoActual
+        };
+        this.navbarData = mapped;
+        this.navbarSubject.next(mapped);
+      },
+      error: () => {
+        this.navbarSubject.next(this.navbarData);
+      }
+    });
   }
 }

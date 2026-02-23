@@ -54,6 +54,11 @@ export class VistaProductosComponent implements OnInit {
     private productService: ProductService
   ) {}
 
+  getHref(d: any): string {
+    if (!d) return '';
+    return d.link || d.url || '';
+  }
+
   ngOnInit(): void {
     // idioma
     const savedLang = localStorage.getItem('language') || 'en';
@@ -62,11 +67,18 @@ export class VistaProductosComponent implements OnInit {
 
     // producto desde service
     this.heroProduct = this.productService.getProduct();
+    this.productService.product$.subscribe(p => {
+      if (!p) return;
+      this.heroProduct = p;
+      this.selectedImage = p.mainImage;
+      this.features = p.features || [];
+      this.downloads = p.downloads || [];
+    });
 
-    // imagen principal
+    // imagen principal inicial
     this.selectedImage = this.heroProduct.mainImage;
 
-    // features y downloads
+    // features y downloads iniciales
     this.features = this.heroProduct.features || [];
     this.downloads = this.heroProduct.downloads || [];
   }

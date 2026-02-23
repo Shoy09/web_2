@@ -26,7 +26,10 @@ export class FooterComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.footerData = this.footerService.getFooter();
+    this.footerService.footerData$.subscribe(data => {
+      this.footerData = data;
+      this.cdr.detectChanges();
+    });
   }
 
   ngAfterViewInit(): void {

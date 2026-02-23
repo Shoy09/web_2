@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { GeneralProductData } from '../models/general-product';
 
 @Injectable({ providedIn: 'root' })
 export class GeneralProductService {
-  private readonly STORAGE_KEY = 'generalProductData';
+  private api = 'http://localhost:3000/api/general-product-page';
 
   private _data: GeneralProductData = this.getDefaultData();
   public data$ = new BehaviorSubject<GeneralProductData>(this._data);
 
-  constructor() {
-    const saved = localStorage.getItem(this.STORAGE_KEY);
-    if (saved) {
-      try {
-        this._data = JSON.parse(saved);
-      } catch {
-        this._data = this.getDefaultData();
-      }
-    }
-    this.data$.next(this._data);
+  constructor(private http: HttpClient) {
+    this.load();
   }
 
   getData(): GeneralProductData {
@@ -26,32 +19,51 @@ export class GeneralProductService {
   }
 
   updateData(data: GeneralProductData) {
-    this._data = JSON.parse(JSON.stringify(data));
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this._data));
-    this.data$.next(this._data);
+    const payload = JSON.parse(JSON.stringify(data));
+    this.http.put<any>(this.api, payload).subscribe({
+      next: (resp) => {
+        this._data = resp ?? payload;
+        this.data$.next(this._data);
+      },
+      error: () => {
+        this._data = payload;
+        this.data$.next(this._data);
+      }
+    });
   }
 
   reset() {
     this._data = this.getDefaultData();
-    localStorage.removeItem(this.STORAGE_KEY);
     this.data$.next(this._data);
+  }
+
+  private load() {
+    this.http.get<any>(this.api).subscribe({
+      next: (resp) => {
+        this._data = resp;
+        this.data$.next(this._data);
+      },
+      error: () => {
+        this.data$.next(this._data);
+      }
+    });
   }
 
   private getDefaultData(): GeneralProductData {
     return {
       headerData: {
-        titulo: 'BROCAS TRICÓNICAS',
-        descripcion: 'Soluciones diseñadas para rendimiento y durabilidad.',
-        breadcrumbs: ['PRODUCTOS', 'BROCAS']
+        titulo: '',
+        descripcion: '',
+        breadcrumbs: []
       },
       infoSection: {
-        texto: 'Conoce nuestra gama de productos y encuentra el ideal para tu operación.',
-        boton: { label: 'CONTÁCTANOS', link: '/contactos' }
+        texto: '',
+        boton: { 
+          label: '', 
+          link: '' 
+        }
       },
-      products: [
-        { title: 'Producto 1', image: 'assets/products/bit1.png', link: '#' },
-        { title: 'Producto 2', image: 'assets/products/bit2.png', link: '#' }
-      ]
+      products: []
     };
   }
 }

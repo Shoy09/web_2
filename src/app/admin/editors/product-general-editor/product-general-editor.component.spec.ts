@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductGeneralEditorComponent } from './product-general-editor.component';
+import { ProductGeneralEditorComponents } from './product-general-editor.component';
 
 describe('ProductGeneralEditorComponent', () => {
-  let component: ProductGeneralEditorComponent;
-  let fixture: ComponentFixture<ProductGeneralEditorComponent>;
+  let component: ProductGeneralEditorComponents;
+  let fixture: ComponentFixture<ProductGeneralEditorComponents>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductGeneralEditorComponent]
+      imports: [ProductGeneralEditorComponents]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProductGeneralEditorComponent);
+    fixture = TestBed.createComponent(ProductGeneralEditorComponents);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

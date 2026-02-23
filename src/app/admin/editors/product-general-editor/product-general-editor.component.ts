@@ -34,15 +34,34 @@ export class ProductGeneralEditorComponents implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
+    this.service.data$.subscribe(data => {
+      if (!data) return;
+      this.resetFormWithData(data);
+    });
   }
 
   resetForm() {
     const data = this.service.getData();
+    this.resetFormWithData(data);
+  }
+
+  private resetFormWithData(data: GeneralProductData) {
+    const breadcrumbsFA = this.fb.array(data.headerData.breadcrumbs.map(b => this.fb.control(b)));
+    const productsFA = this.fb.array(
+      data.products.map(p =>
+        this.fb.group({
+          title: [p.title],
+          image: [p.image],
+          link: [p.link]
+        })
+      )
+    );
+
     this.form = this.fb.group({
       headerData: this.fb.group({
         titulo: [data.headerData.titulo],
         descripcion: [data.headerData.descripcion],
-        breadcrumbs: this.fb.array(data.headerData.breadcrumbs.map(b => this.fb.control(b)))
+        breadcrumbs: breadcrumbsFA
       }),
       infoSection: this.fb.group({
         texto: [data.infoSection.texto],
@@ -51,15 +70,7 @@ export class ProductGeneralEditorComponents implements OnInit {
           link: [data.infoSection.boton.link]
         })
       }),
-      products: this.fb.array(
-        data.products.map(p =>
-          this.fb.group({
-            title: [p.title],
-            image: [p.image],
-            link: [p.link]
-          })
-        )
-      )
+      products: productsFA
     });
   }
 

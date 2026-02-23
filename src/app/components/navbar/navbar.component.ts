@@ -72,6 +72,7 @@ export class NavbarComponent implements OnInit {
     
     this.checkProductPage();
     this.loadNavbar();
+    this.navbarService.load();
     
     this.navbarService.navbarData$.subscribe(data => {
       this.applyNavbarData(data);

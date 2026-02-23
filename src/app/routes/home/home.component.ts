@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentLanguage: string = 'en';
 
   private destroy$ = new Subject<void>();
+  private homeSubscription!: Subscription;
 
   // 🔥 DATA REAL (del editor)
   hero!: HeroSection;
@@ -42,24 +43,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.currentLanguage = savedLang;
     this.translate.use(savedLang);
 
-    // 🔥 cargar data del editor
-    this.loadHomeData();
-  }
+    // Suscribirse al observable del homeData para recibir cambios en tiempo real
+    this.homeSubscription = this.homeService.homeDataObservable().subscribe(data => {
+      if (data) {
+        this.hero = data.hero;
+        this.cards = data.cards;
+        this.about = data.about;
+      }
+    });
 
-  loadHomeData() {
-    const data: HomeData = this.homeService.getHome();
-    this.hero = data.hero;
-    this.cards = data.cards;
-    this.about = data.about;
+    // Cargar datos iniciales desde la API
+    this.homeService.getHome().subscribe();
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+    if (this.homeSubscription) {
+      this.homeSubscription.unsubscribe();
+    }
   }
 
   // ===============================
-  // DROPDOWN
+  // DROPDOWN DE IDIOMAS
   // ===============================
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
