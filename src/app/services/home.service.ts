@@ -6,7 +6,7 @@ import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class HomeService {
-  private api = 'https://backend-web-azure.vercel.app/api/home';
+  private api = '/api/home';
 
   private homeData$ = new BehaviorSubject<HomeData | null>(null);
 

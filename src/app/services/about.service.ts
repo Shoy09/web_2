@@ -5,7 +5,7 @@ import { AboutSection } from '../models/about.model';
 
 @Injectable({ providedIn: 'root' })
 export class AboutService {
-  private api = 'https://backend-web-azure.vercel.app/api/about';
+  private api = '/api/about';
 
   private _aboutData: AboutSection = this.getDefaultData();
   private aboutDataSubject = new BehaviorSubject<AboutSection>(this._aboutData);

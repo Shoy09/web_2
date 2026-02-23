@@ -8,7 +8,7 @@ import { HeroProduct } from '../models/product.model';
 })
 export class ProductService {
 
-  private api = 'https://backend-web-azure.vercel.app/api/products';
+  private api = '/api/products';
 
   private defaultProduct: HeroProduct = {
     breadcrumbs: [
@@ -21,7 +21,7 @@ export class ProductService {
     descriptions: [
       'Brocas giratorias para perforación de pozos en roca dura. Camisa especialmente diseñada para ayudar en la evacuación rápida de esquejes. Los cojinetes abiertos de alta carga, la estructura de corte robusta y el tratamiento con carburo HET proporcionan altas tasas de penetración y una larga vida útil. Los conos ventilados (de 9» de diámetro y superiores) proporcionan limpieza adicional de los rodamientos y reducción del calor.',
       'Los productos RIDGEBACK™ contienen cojinetes de mayor vida útil, protección adicional contra calibres y elementos de estructura de corte mejorados para su uso en aplicaciones de alta caída.'
-    ], 
+    ],
     mainImage: 'hero (1).webp',
     thumbnails: ['hero (1).webp'],
     contactLink: '#',

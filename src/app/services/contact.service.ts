@@ -6,7 +6,7 @@ import { Region, ContactPageContent } from '../models/contact.model';
 @Injectable({ providedIn: 'root' })
 export class ContactService {
 
-  private api = 'https://backend-web-azure.vercel.app/api/contact-page';
+  private api = '/api/contact-page';
 
   // =============================
   // DATA INICIAL (fallback)
