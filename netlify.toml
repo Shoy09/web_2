@@ -1,4 +1,8 @@
+[build]
+  publish = "dist/seminco_web_2"
+
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/*"
+  to = "https://backend-web-azure.vercel.app/api/:splat"
   status = 200
+  force = true

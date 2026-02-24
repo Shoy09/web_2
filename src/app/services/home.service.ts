@@ -33,7 +33,12 @@ export class HomeService {
 
   updateHome(data: HomeData): Observable<HomeData> {
     return this.http.put<HomeData>(this.api, data).pipe(
-      tap(updated => this.homeData$.next(updated))
+      tap(updated => this.homeData$.next(updated)),
+      catchError(() => {
+        return this.http.post<HomeData>(this.api, data).pipe(
+          tap(updated => this.homeData$.next(updated))
+        );
+      })
     );
   }
 }
