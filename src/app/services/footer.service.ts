@@ -51,8 +51,17 @@ export class FooterService {
         this.footerData$.next(mapped);
       },
       error: () => {
-        this.footerData = data;
-        this.footerData$.next(data);
+        this.http.post<any>(this.api, { content: data }).subscribe({
+          next: (resp) => {
+            const mapped: FooterData = resp.content ?? data;
+            this.footerData = mapped;
+            this.footerData$.next(mapped);
+          },
+          error: () => {
+            this.footerData = data;
+            this.footerData$.next(data);
+          }
+        });
       }
     });
   }

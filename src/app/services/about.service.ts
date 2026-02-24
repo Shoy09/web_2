@@ -37,8 +37,17 @@ export class AboutService {
         this.aboutDataSubject.next(mapped);
       },
       error: () => {
-        this._aboutData = aboutData;
-        this.aboutDataSubject.next(aboutData);
+        this.http.post<any>(this.api, { aboutData }).subscribe({
+          next: (resp) => {
+            const mapped: AboutSection = resp.aboutData ?? aboutData;
+            this._aboutData = mapped;
+            this.aboutDataSubject.next(mapped);
+          },
+          error: () => {
+            this._aboutData = aboutData;
+            this.aboutDataSubject.next(aboutData);
+          }
+        });
       }
     });
   }

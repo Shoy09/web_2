@@ -26,8 +26,16 @@ export class GeneralProductService {
         this.data$.next(this._data);
       },
       error: () => {
-        this._data = payload;
-        this.data$.next(this._data);
+        this.http.post<any>(this.api, payload).subscribe({
+          next: (resp) => {
+            this._data = resp ?? payload;
+            this.data$.next(this._data);
+          },
+          error: () => {
+            this._data = payload;
+            this.data$.next(this._data);
+          }
+        });
       }
     });
   }

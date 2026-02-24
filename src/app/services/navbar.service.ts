@@ -65,8 +65,28 @@ export class NavbarService {
         this.navbarSubject.next(mapped);
       },
       error: () => {
-        this.navbarData = data;
-        this.navbarSubject.next(data);
+        this.http.post<any>(this.api, data).subscribe({
+          next: (resp) => {
+            const mapped: NavbarData = {
+              productosLabel: resp.productosLabel ?? data.productosLabel,
+              aboutLabel: resp.aboutLabel ?? data.aboutLabel,
+              contactoLabel: resp.contactoLabel ?? data.contactoLabel,
+              contactoRuta: resp.contactoRuta ?? data.contactoRuta,
+              siguenos: resp.siguenos ?? data.siguenos,
+              buscarPlaceholder: resp.buscarPlaceholder ?? data.buscarPlaceholder,
+              aboutMenu: resp.aboutMenu ?? data.aboutMenu,
+              productosMenu: resp.productosMenu ?? data.productosMenu,
+              redes: resp.redes ?? data.redes,
+              logoActual: resp.logoActual ?? data.logoActual
+            };
+            this.navbarData = mapped;
+            this.navbarSubject.next(mapped);
+          },
+          error: () => {
+            this.navbarData = data;
+            this.navbarSubject.next(data);
+          }
+        });
       }
     });
   }

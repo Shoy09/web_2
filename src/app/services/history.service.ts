@@ -54,7 +54,15 @@ export class HistoryService {
         this.dataSubject.next(mapped);
       },
       error: () => {
-        this.dataSubject.next(clone);
+        this.http.post<any>(this.api, clone).subscribe({
+          next: (resp) => {
+            const mapped: HistoryData = { heroTitle: resp.heroTitle ?? clone.heroTitle, timeline: resp.timeline ?? clone.timeline };
+            this.dataSubject.next(mapped);
+          },
+          error: () => {
+            this.dataSubject.next(clone);
+          }
+        });
       }
     });
   }

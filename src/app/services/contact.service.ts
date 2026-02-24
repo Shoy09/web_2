@@ -80,8 +80,16 @@ export class ContactService {
         this.content$.next(this._content);
       },
       error: () => {
-        this._content = payload.content;
-        this.content$.next(this._content);
+        this.http.post<any>(this.api, payload).subscribe({
+          next: (resp) => {
+            this._content = resp.content ?? payload.content;
+            this.content$.next(this._content);
+          },
+          error: () => {
+            this._content = payload.content;
+            this.content$.next(this._content);
+          }
+        });
       }
     });
   }
@@ -94,8 +102,16 @@ export class ContactService {
         this.regions$.next(this._regions);
       },
       error: () => {
-        this._regions = payload.regions;
-        this.regions$.next(this._regions);
+        this.http.post<any>(this.api, payload).subscribe({
+          next: (resp) => {
+            this._regions = resp.regions ?? payload.regions;
+            this.regions$.next(this._regions);
+          },
+          error: () => {
+            this._regions = payload.regions;
+            this.regions$.next(this._regions);
+          }
+        });
       }
     });
   }

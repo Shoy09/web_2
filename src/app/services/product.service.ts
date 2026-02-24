@@ -81,7 +81,26 @@ export class ProductService {
           this.productSubject.next(mapped);
         },
         error: () => {
-          this.productSubject.next(payload);
+          this.http.post<any>(this.api, payload).subscribe({
+            next: (resp) => {
+              this.currentId = resp.id ?? this.currentId;
+              const mapped: HeroProduct = {
+                breadcrumbs: resp.breadcrumbs ?? payload.breadcrumbs,
+                title: resp.title ?? payload.title,
+                subtitle: resp.subtitle ?? payload.subtitle,
+                descriptions: resp.descriptions ?? payload.descriptions,
+                mainImage: resp.mainImage ?? payload.mainImage,
+                thumbnails: resp.thumbnails ?? payload.thumbnails,
+                contactLink: resp.contactLink ?? payload.contactLink,
+                features: resp.features ?? payload.features,
+                downloads: this.normalizeDownloads(resp.downloads ?? payload.downloads)
+              };
+              this.productSubject.next(mapped);
+            },
+            error: () => {
+              this.productSubject.next(payload);
+            }
+          });
         }
       });
     } else {
@@ -144,7 +163,26 @@ export class ProductService {
           this.productSubject.next(mapped);
         },
         error: () => {
-          this.productSubject.next(data);
+          this.http.post<any>(this.api, form).subscribe({
+            next: (resp) => {
+              this.currentId = resp.id ?? this.currentId;
+              const mapped: HeroProduct = {
+                breadcrumbs: resp.breadcrumbs ?? data.breadcrumbs,
+                title: resp.title ?? data.title,
+                subtitle: resp.subtitle ?? data.subtitle,
+                descriptions: resp.descriptions ?? data.descriptions,
+                mainImage: resp.mainImage ?? data.mainImage,
+                thumbnails: resp.thumbnails ?? data.thumbnails,
+                contactLink: resp.contactLink ?? data.contactLink,
+                features: resp.features ?? data.features,
+                downloads: this.normalizeDownloads(resp.downloads ?? data.downloads)
+              };
+              this.productSubject.next(mapped);
+            },
+            error: () => {
+              this.productSubject.next(data);
+            }
+          });
         }
       });
     } else {
